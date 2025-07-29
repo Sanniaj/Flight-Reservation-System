@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <title>Flight website front page</title>
     <link rel="stylesheet" href="frontend-search-box.css">
+    <script src="flight-search-location.js"></script>
 
 </head>
 
@@ -16,7 +17,7 @@
 
             <div class = "input-with-icon"> <!--class input-with-icon to group icon and input side by side -->
                 <img src="icon-from.png" class= "icon icon-layout" alt="From">
-                <input type = "text" placeholder="From">
+                <input id="departure" type = "text" placeholder="From">
             </div>
 
             <button class="button-icon" aria-label="Swap">
@@ -25,7 +26,8 @@
 
             <div class = "input-with-icon">
                 <img src="icon-to.png" class= "icon icon-layout" alt = "To">
-                <input type=" text" placeholder="Try: Nevada">
+                <input id="arrival" type=" text" placeholder="Try: Nevada">
+                <button onclick="flightSearchResults()">Search Flight</button>
             </div>
 
         </div>
