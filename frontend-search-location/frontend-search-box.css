@@ -1,0 +1,34 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin:0;
+    background-color: rgb(166, 184, 201);
+}
+
+
+
+.search-box{
+    width: 900px;
+    height: 25px;
+    max-width: 90%;
+    border: 8px;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: rgb(87, 138, 182);
+}
+
+
+    /* ==search-location layout style== */
+.search-location {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width:430px;
+    height: 30px;
+    margin-right: 20px;
+    background-color: green;
+
+}
