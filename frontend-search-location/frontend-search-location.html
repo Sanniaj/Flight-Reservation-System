@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -13,9 +13,21 @@
     <div class="search-box">
 
         <div class = "search-location" >
-            <input type = "text" placeholder = "From">
-            <button>Swap</button>
-            <input type = "text" placeholder = "To: try Nevada">
+
+            <div class = "input-with-icon"> <!--class input-with-icon to group icon and input side by side -->
+                <img src="icon-from.png" class= "icon icon-layout" alt="From">
+                <input type = "text" placeholder="From">
+            </div>
+
+            <button class="button-icon" aria-label="Swap">
+                <img src="icon-swap.png" class="icon" alt="Swap">
+            </button>
+
+            <div class = "input-with-icon">
+                <img src="icon-to.png" class= "icon icon-layout" alt = "To">
+                <input type=" text" placeholder="Try: Nevada">
+            </div>
+
         </div>
 
         <div class="Calendar">

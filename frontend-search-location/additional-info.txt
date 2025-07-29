@@ -1,0 +1,3 @@
+ <!-- Search bar with button -->
+    <input type = "text" placeholder="Search">  <!-- user input text into place holder - Search -->
+    <button>Search</button>                     <!-- create button named "Search"-->

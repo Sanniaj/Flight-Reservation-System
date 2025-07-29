@@ -9,7 +9,6 @@ body{
 }
 
 
-
 .search-box{
     width: 900px;
     height: 25px;
@@ -19,16 +18,112 @@ body{
     padding: 20px;
     background-color: rgb(87, 138, 182);
 }
+/* 
+===============================================================================
 
 
+===============================================================================
+
+*/
     /* ==search-location layout style== */
 .search-location {
+
     display: flex;
     gap: 10px;
     align-items: center;
     width:430px;
     height: 30px;
     margin-right: 20px;
-    background-color: green;
+    
 
 }
+
+/* 
+===============================================================================
+.input-with-icon
+position        - sets element as a containing block for children
+display         - makes it inline 
+===============================================================================
+*/
+
+.input-with-icon{
+    position: relative;
+    display: inline-block;
+ 
+}
+
+/* 
+===============================================================================
+.input-with-icon input
+height          - set input's height
+width           - set input's width
+font-size       - set size of text
+line-height     - aligns text vertically
+padding-left    - create space on the left for the icon
+===============================================================================
+*/
+.input-with-icon input{
+    height: 40px;
+    width: 200px;
+    font-size: 18px;
+    line-height: 30px;
+    padding-left: 40px;
+}
+
+/* 
+===============================================================================
+
+===============================================================================
+*/
+.icon{
+    width: 18px;
+    height: 18px;
+}
+
+.icon-layout{
+    left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* 
+===============================================================================
+.button-icon 
+set width+height for [button],
+border-radius = 50% -> set border from square to circle
+display: inline-flex - set button to flexible state for align and justify content.
+Align-item: center - align button from top to bottom - center
+justify-content: center - align button from left to right - center
+===============================================================================
+*/
+.button-icon{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+/* 
+===============================================================================
+.button-icon img
+set width+height for icon
+===============================================================================
+*/
+.button-icon img{
+    width: 40px;    
+    height:36px;
+}
+
+
+/* 
+===============================================================================
+
+
+===============================================================================
+*/
