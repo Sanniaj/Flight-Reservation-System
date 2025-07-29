@@ -1,0 +1,11 @@
+input {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+#checkout-container{
+    display: flex;
+    justify-content: center;
+}
