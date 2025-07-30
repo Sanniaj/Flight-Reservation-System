@@ -27,3 +27,17 @@ const displayFlightSearchResults = () => {
     const arr = JSON.parse(localStorage.getItem("arrivalLocation"));
     document.getElementById("searchFlights").innerHTML = `Looking at flights from ${dep} to ${arr}`;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    //for search page
+    const searchButton = document.getElementById('searchButton');
+    if (searchButton) {
+        searchButton.addEventListener('click', flightSearchResults);
+    }
+
+    // for results
+    const searchFlights = document.getElementById('searchFlights');
+    if (searchFlights) {
+        displayFlightSearchResults();
+    }
+});

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>Flight website front page</title>
     <link rel="stylesheet" href="frontend-search-box.css">
-    <script src="flight-search-location.js"></script>
+    <script type ="module" src="flight-search-location.js"></script>
 
 </head>
 
@@ -16,7 +16,7 @@
         <div class = "search-location" >
             <input id="departure" type = "text" placeholder = "From">
             <input id="arrival" type = "text" placeholder = "To: try Nevada">
-            <button onclick="flightSearchResults()">Search Flight</button>
+            <button id="searchButton">Search Flight</button>
         </div>
 
         <div class="Calendar">
