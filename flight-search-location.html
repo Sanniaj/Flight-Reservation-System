@@ -1,26 +1,34 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>Flight website front page</title>
-
 </head>
-
 <body>
-    <div> class = "search-row" 
-        <input type = "text" placeholder = "From">
+    <div class="search-row">
+        <input type="text" placeholder="From">
         <button>Swap</button>
-        <input type = "text" placeholder = "To: try Nevada">
+        <input type="text" placeholder="To: try Nevada">
     </div>
 
     <!-- Search bar with button -->
-    <input type = "text" placeholder="Search">  <!-- user input text into place holder - Search -->
-    <button>Search</button>                     <!-- create button named "Search"-->
+    <input type="text" placeholder="Search">
+    <button>Search</button>
 
+    <!-- Arrival Time and Date selectors -->
+    <div>
+        <label for="arrival-hour">Arrival Time:</label>
+        <select id="arrival-hour">
+            <!-- JS will populate 0 to 23 -->
+        </select>
 
+        <label for="arrival-date">Arrival Date:</label>
+        <input type="date" id="arrival-date">
+    </div>
 
+    <!-- Times display -->
+    <div id="flight-times"></div>
+
+    <script src="searchtimes.js"></script>
 </body>
-
 </html>
