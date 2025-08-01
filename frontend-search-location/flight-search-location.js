@@ -8,7 +8,7 @@ const aircraftTypes = ["Boeing 737", "Boeing 777", "Airbus A320", "Airbus A330",
 //random flight gen
 const generateRandomFlights = (departure, arrival) => {
 
-    const flightCount = Math.floor(Math.random() * 6);
+    const flightCount = Math.floor(Math.random() * 11);
 
     if (flightCount === 0) {
         return [];
