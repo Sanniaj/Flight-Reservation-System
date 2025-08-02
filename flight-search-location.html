@@ -2,25 +2,34 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Flight website front page</title>
+    <title>omg is this working?</title>
+    <style>
+        .search-row, #flight-times div {
+            margin-bottom: 10px;
+        }
+        #flight-times div {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
     <div class="search-row">
-        <input type="text" placeholder="From">
-        <button>Swap</button>
-        <input type="text" placeholder="To: try Nevada">
+        <input type="text" id="from-location" placeholder="From">
+        <button onclick="swapLocations()">Swap</button>
+        <input type="text" id="to-location" placeholder="To: try Nevada">
     </div>
 
     <!-- Search bar with button -->
     <input type="text" placeholder="Search">
-    <button>Search</button>
+    <button onclick="showFlightTimes()">Search</button>
 
     <!-- Arrival Time and Date selectors -->
     <div>
         <label for="arrival-hour">Arrival Time:</label>
-        <select id="arrival-hour">
-            <!-- JS will populate 0 to 23 -->
-        </select>
+        <select id="arrival-hour"></select>
 
         <label for="arrival-date">Arrival Date:</label>
         <input type="date" id="arrival-date">
