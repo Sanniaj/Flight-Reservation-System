@@ -16,3 +16,21 @@
     - ADD 'input-with-icon' class to group icon and input together
     - Add 'icon-layout' class for icon positioning inside input box
     - Add 'button-icon' for [button] alignment and layout
+
+## [v0.1.2] - 2025-07-29
+### Update
+    - Modified 'flight-search-results.html' to display departure date in search results
+### Added
+    - Added swap-button.js to switch departure and arrival input
+    - Added 'swap-button.js' to swap [departure] <-> [arrival] input 
+    - <input type="date"> with ID 'departure-date" to select departure date
+
+## [v0.1.2] - 2025-08-01
+### Update
+### Added
+    - create test folder for testing purposes
+    - Created flight-data.csv with sample test data
+    - created test-search-location.js similar to frontend-search-location.html
+    - created test-search-location.js to compare user input with 'flight-data' and store the array to local storage
+    - created test-search-result.html to show result page to start working on frontend-results layouts.
+    - created test-search-result.js to retrieve filtered results and display on search results.

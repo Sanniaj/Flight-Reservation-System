@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Flight website front page</title>
+    <link rel="stylesheet" href="frontend-search-box.css">
+    <script src="swap-button.js"></script>
+
+
+
+</head>
+
+<body>
+    <div class="search-box">
+
+        <div class = "search-location" >
+
+            <!--class input-with-icon to group icon and input side by side -->
+            <div class="input-with-icon"> 
+                <img src="icon-from.png" class="icon icon-layout" alt="From">
+                <input id="departure" type="text" placeholder="From">
+            </div>
+
+            <button class="button-icon" aria-label="Switch location" onclick="swapperButton()">
+                <img src="icon-swap.png" class="icon" alt="Swap location">
+            </button>
+
+            <div class="input-with-icon">
+                <img src="icon-to.png" class="icon icon-layout" alt="To">
+                <input id="arrival" type="text" placeholder="Try: Nevada">
+                
+            </div>
+
+
+
+            <!-- date input box -->
+             <input id="departureDate" type="date">
+
+             <button id="searchButton">Search Flight</button>
+
+        </div>
+
+        <div class="Calendar">
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- testing location search -->
+     <script src="test-search-location.js"></script>
+</body>
+
+</html>
