@@ -13,6 +13,17 @@
 </head>
 
 <body>
+
+    <!-- Slogan for airline -->
+    <div class="frontpage-slogan"> 
+        Fly beyond the clouds 
+    </div>
+
+    <!-- display group name -->
+    <div class="frontpage-group-name"> 
+        LikeaG6 
+    </div>
+
     <div class="search-box">
 
         <div class = "search-location" >
@@ -20,39 +31,37 @@
             <!--class input-with-icon to group icon and input side by side -->
             <div class="input-with-icon"> 
                 <img src="icon-from.png" class="icon icon-layout" alt="From">
-                <input id="departure" type="text" placeholder="From">
+                <input id="departure" type="text" placeholder="Try: LAX">
             </div>
 
-            <button class="button-icon" aria-label="Switch location" onclick="swapperButton()">
+            <button class="swap-button-icon" aria-label="Switch location" onclick="swapperButton()">
                 <img src="icon-swap.png" class="icon" alt="Swap location">
             </button>
 
             <div class="input-with-icon">
                 <img src="icon-to.png" class="icon icon-layout" alt="To">
-                <input id="arrival" type="text" placeholder="Try: Nevada">
-                
+                <input id="arrival" type="text" placeholder="Try: JFK">              
             </div>
 
 
 
             <!-- date input box -->
-             <input id="departureDate" type="date">
+            <div class="calendar-box">
+                <input id="departureDate" type="date">
+            </div>
 
-             <button id="searchButton">Search Flight</button>
-
-        </div>
-
-        <div class="Calendar">
-
-        </div>
-
+            <!-- Search Fight button -->
+            <button id="searchButton" class="layout-search-button">
+                Search <br> Flight
+            </button>
     </div>
 
 
 
-
-
-
+    <!-- background picture credit to Stephan Mahlke -->
+    <div class="background-picture-credit">
+        Image: Over the clouds by Stephan Mahlke
+    </div>
 
     <!-- testing location search -->
      <script src="test-search-location.js"></script>

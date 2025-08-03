@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () =>{
             //create temp variable 'flight' to hold data as we loop
             const flight= searchResults[i];
             const flightResults = "displaying filtered results: " + "Departure: " + flight.departure + " | " + "Arrival: " + flight.arrival + " | " 
-                            + "Departure Date: " + flight.departureDate + " | " + "Departure Time: " + flight.departureTime;
+                            + "Departure Date: " + flight.departureDate + " | " + "Departure Time: " + flight.departureTime + " | Price: $" + flight.price;
 
             // add message to 'searchResults'   
             // += messege keeps adding to existing results. 

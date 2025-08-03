@@ -34,3 +34,14 @@
     - created test-search-location.js to compare user input with 'flight-data' and store the array to local storage
     - created test-search-result.html to show result page to start working on frontend-results layouts.
     - created test-search-result.js to retrieve filtered results and display on search results.
+
+## [v0.1.3] - 2025-08-02
+### Update
+    - Adjusted [search-box] and input colors
+    - Modified [Search Flight] button layout and color
+    - Modified [slogan] and [group-name] layout and spacing
+
+### Added
+    - Added slogan and group-name elements to front page
+    - Added background picture
+    - Added background credit to picture
