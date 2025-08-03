@@ -1,9 +1,12 @@
 //SeatGen.js
 // This module generates seats to be filled by passengers.
-let seatMap = [];
 export function generateSeats(rows, columns) 
 {
-    seatMap = [];
+  if (rows <= 0 || columns <= 0 || !Number.isInteger(rows) || !Number.isInteger(columns))
+  {
+    throw new Error("Rows and columns must be postitive integers");
+  }
+    let seatMap = [];
     for (let i = 0; i < rows; i++) 
     {
         let row = [];
@@ -21,8 +24,9 @@ export function generateSeats(rows, columns)
         seatMap.push(row);
     }
     console.log("Seat map generated with " + rows + " rows and " + columns + " columns.");
+    return seatMap;
 }   
-export function printSeatMap() 
+export function printSeatMap(seatMap) 
 {
   for (const row of seatMap) 
     {
