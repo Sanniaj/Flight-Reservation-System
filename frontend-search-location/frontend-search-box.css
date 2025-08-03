@@ -1,129 +1,160 @@
-
 body{
+    background-image: url("background-picture/stephan-mahlke-lOrfvkBNEsE-unsplash.jpg");
+    background-position: center;
+    background-size: cover;
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
-    margin:0;
-    background-color: rgb(166, 184, 201);
+    position: relative;
 }
 
+.frontpage-slogan{
+    position: absolute;
+    top: 100px;
+    left: 80px;
+    font-size: 46px;
+    font-style: italic;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 2px;
+    color: rgb(240, 230, 220);
+}
+.frontpage-group-name{
+    position: absolute;
+    top: 150px;
+    left: 590px;
+    font-size: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style:italic;
+    letter-spacing: 1px;
+    color: rgba(245, 220, 200, 0.6);
+}
 
+/* layout for searchbox */
 .search-box{
-    width: 900px;
-    height: 25px;
-    max-width: 90%;
-    border: 8px;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: rgb(87, 138, 182);
+    box-sizing: border-box;
+    margin-top: 165px;
+    width: 780px;
+    height: 75px;
+    border-radius: 20px;
+    padding: 24px;
+    background-color: rgba(230, 220, 210, 0.55);
 }
-/* 
-===============================================================================
 
-
-===============================================================================
-
-*/
-    /* ==search-location layout style== */
+/* layout for search-locatoin */
 .search-location {
-
     display: flex;
-    gap: 10px;
+    gap: 5px;
+    height: 26px;
     align-items: center;
-    width:430px;
-    height: 30px;
-    margin-right: 20px;
-    
-
+    justify-content: center;
 }
 
 /* 
-===============================================================================
 .input-with-icon
 position        - sets element as a containing block for children
-display         - makes it inline 
-===============================================================================
-*/
-
+display         - makes it inline  */
 .input-with-icon{
     position: relative;
     display: inline-block;
- 
 }
 
-/* 
-===============================================================================
+/*===============================================================================
 .input-with-icon input
-height          - set input's height
-width           - set input's width
+height          - set input box's height
+width           - set input box's width
 font-size       - set size of text
-line-height     - aligns text vertically
 padding-left    - create space on the left for the icon
-===============================================================================
-*/
+border-radius   - round border by 10px
+===============================================================================*/
 .input-with-icon input{
+    width: 180px;
     height: 40px;
-    width: 200px;
-    font-size: 18px;
-    line-height: 30px;
-    padding-left: 40px;
+    font-size: 15px;
+    padding-left: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(245, 240, 235)
 }
 
-/* 
-===============================================================================
-
-===============================================================================
-*/
+/*==============================================================================
+change size of icon
+===============================================================================*/
 .icon{
     width: 18px;
     height: 18px;
 }
 
+/*===============================================================================
+margin-left: set 7px space between left border and icon
+position: absolute -> free icon position from parent input-with-icon to position
+
+align top 50% + transform: translate Y(50%) 
+    vertically align center of icon with input. 
+===============================================================================*/
 .icon-layout{
-    left: 10px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    left: 7px;
     pointer-events: none;
 }
 
-/* 
-===============================================================================
+/*===============================================================================
 .button-icon 
 set width+height for [button],
 border-radius = 50% -> set border from square to circle
 display: inline-flex - set button to flexible state for align and justify content.
 Align-item: center - align button from top to bottom - center
 justify-content: center - align button from left to right - center
-===============================================================================
-*/
-.button-icon{
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+===============================================================================*/
+.swap-button-icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
-
-/* 
-===============================================================================
+/*===============================================================================
 .button-icon img
 set width+height for icon
-===============================================================================
-*/
-.button-icon img{
-    width: 40px;    
+===============================================================================*/
+.swap-button-icon img{
+    width: 40px;
     height:36px;
 }
 
+.calendar-box input{
+    width:120px;
+    height:40px;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(245, 240, 235);
+}
 
-/* 
-===============================================================================
+/* Search flight button layout */
+.layout-search-button{
+    background-color: rgba(255, 255, 255, 0.1);
+    width:80px;
+    height: 45px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+/* set mouse hover over search button to change color */
+.layout-search-button:hover{
+    background-color: rgb(78, 152, 226) ;
+}
 
-
-===============================================================================
-*/
+.background-picture-credit{
+    position:absolute;
+    bottom: 10px;
+    right: 1px;
+    font-size: 10px;
+    color:rgba(2, 2, 36, 0.3);
+}

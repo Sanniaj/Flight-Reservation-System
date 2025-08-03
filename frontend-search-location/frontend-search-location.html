@@ -1,31 +1,56 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Flight website front page</title>
     <link rel="stylesheet" href="frontend-search-box.css">
-    <script type ="module" src="flight-search-location.js"></script>
-
+    <script src="swap-button.js"></script>
+    <script type="module" src="flight-search-location.js"></script>
 </head>
 
 <body>
-    <div class="search-box">
+<!-- Slogan for airline -->
+<div class="frontpage-slogan">
+    Fly beyond the clouds
+</div>
 
-        <div class = "search-location" >
-            <input id="departure" type = "text" placeholder = "From">
-            <input id="arrival" type = "text" placeholder = "To: try Nevada">
-            <button id="searchButton">Search Flight</button>
+<!-- display group name -->
+<div class="frontpage-group-name">
+    LikeaG6
+</div>
+
+<div class="search-box">
+    <div class="search-location">
+        <!--class input-with-icon to group icon and input side by side -->
+        <div class="input-with-icon">
+            <img src="icon-from.png" class="icon icon-layout" alt="From">
+            <input id="departure" type="text" placeholder="Try: LAX">
         </div>
 
-        <div class="Calendar">
+        <button class="swap-button-icon" aria-label="Switch location" onclick="swapperButton()">
+            <img src="icon-swap.png" class="icon" alt="Swap location">
+        </button>
 
+        <div class="input-with-icon">
+            <img src="icon-to.png" class="icon icon-layout" alt="To">
+            <input id="arrival" type="text" placeholder="Try: JFK">
         </div>
 
+        <!-- date input box -->
+        <div class="calendar-box">
+            <input id="departureDate" type="date">
+        </div>
+
+        <!-- Search Fight button -->
+        <button id="searchButton" class="layout-search-button">
+            Search <br> Flight
+        </button>
     </div>
+</div>
 
-
+<!-- background picture credit to Stephan Mahlke -->
+<div class="background-picture-credit">
+    Image: Over the clouds by Stephan Mahlke
+</div>
 </body>
-
 </html>
