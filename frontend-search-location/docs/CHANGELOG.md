@@ -45,3 +45,10 @@
     - Added slogan and group-name elements to front page
     - Added background picture
     - Added background credit to picture
+
+## [v0.1.4] - 2025-08-06
+### Bug
+    - zooming frontpage only zoom search box and Slogan. zoom does not apply to entire page.
+### Update
+### Added
+    - 
