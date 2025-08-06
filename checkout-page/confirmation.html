@@ -2,10 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-  <script src="checkout-page.js"></script>
-    <title>Confirmation</title>
+    <link rel="stylesheet" href="checkout-page.css" />
+    <title>Booking Confirmation</title>
 </head>
-<body onload= "console.log(newCustomer)">
+<body>
+<script src="checkout-page.js"></script>
+<script src="confirmation.js"></script>
 
+<div id="checkout-container">
+    <div class="checkout-details-container">
+        <h1>Booking Confirmed</h1>
+        <div id="confirmation-details">
+            <label>Confirmation Number</label><br />
+            <input type="text" id="confirmation_number" readonly /><br />
+            <label>Passenger Name</label><br />
+            <input type="text" id="passenger_name" readonly /><br />
+            <label>Email</label><br />
+            <input type="text" id="passenger_email" readonly /><br />
+            <label>Flight</label><br />
+            <input type="text" id="flight_info" readonly /><br />
+            <label>Total Paid</label><br />
+            <input type="text" id="total_paid" readonly /><br />
+        </div>
+    </div>
+
+    <div class="checkout-details-container">
+        <h1>Next Steps</h1>
+        <p>Your booking is confirmed. Please save your confirmation number for future reference.</p>
+    </div>
+</div>
 </body>
 </html>
