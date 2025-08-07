@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="checkout-page.css" />
+
+  <title>Checkout Page</title>
+</head>
+<body>
+<script src="checkout-page.js"></script>
+
+<div id="checkout-container">
+  <div class="checkout-details-container">
+    <h1>Checkout</h1>
+    <form onsubmit="return addNewCustomer(event)">
+      <label for="first_name">First Name</label><br />
+      <input type="text" id="first_name" name="first_name" /><br />
+      <label for="last_name">Last Name</label><br />
+      <input type="text" id="last_name" name="last_name" /><br />
+      <label for="email">Email</label><br />
+      <input type="email" id="email" name="email" /><br />
+      <label for="address">Address</label><br />
+      <input type="text" id="address" name="address" /><br />
+      <label for="city">City</label><br />
+      <input type="text" id="city" name="city" /><br />
+      <label for="state">State</label><br />
+      <input type="text" id="state" name="state" /><br />
+      <label for="zip">Zip</label><br />
+      <input type="text" id="zip" name="zip" /><br />
+      <label for="country">Country</label><br />
+      <input type="text" id="country" name="country" /><br />
+      <label for="phone">Phone</label><br />
+      <input type="text" id="phone" name="phone" /><br />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div class="checkout-details-container">
+    <h1>Order Summary</h1>
+    <div id="pricing">
+      <h3>Subtotal:</h3>
+      <h3>Total:</h3>
+    </div>
+  </div>
+</div>
+</body>
+</html>
