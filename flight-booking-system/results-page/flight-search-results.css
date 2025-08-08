@@ -1,0 +1,182 @@
+/* Font import for LEMONMILK-REGULAR */
+@font-face {
+    font-family: 'LEMONMILK';
+    src: url('../shared code/assets/LEMONMILK-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Original flight info styles */
+.flight-info {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    font-family: Arial;
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Update headers to use LEMONMILK font */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'LEMONMILK', Arial, sans-serif;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px auto;
+    text-align: center;
+    display: block;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Seat display styles */
+.seat-map-container {
+    margin: 20px 0;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.seat-map-header {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #495057;
+    text-align: center;
+    font-family: 'LEMONMILK', Arial, sans-serif;
+}
+
+.seat-legend {
+    text-align: center;
+    margin: 10px 0 20px 0;
+    font-size: 14px;
+    color: #495057;
+}
+
+.seat-legend span {
+    margin: 0 10px;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+    gap: 5px;
+}
+
+.seat {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.seat.available {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.seat.available:hover {
+    background-color: #0056b3;
+}
+
+.seat.occupied {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+    cursor: not-allowed;
+}
+
+.seat.selected {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.aisle {
+    width: 20px;
+}
+
+.price-breakdown {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #007bff;
+    text-align: left;
+}
+
+.total-price {
+    font-weight: bold;
+    font-size: 18px;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+/* Summary styling for selected seats */
+#seatSummary-FL1001, #seatSummary-FL1002 {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .flight-info {
+        padding: 20px 10px;
+        margin: 15px 5px;
+    }
+
+    .seat {
+        width: 25px;
+        height: 25px;
+        font-size: 9px;
+    }
+
+    .seat-row {
+        gap: 3px;
+    }
+
+    .aisle {
+        width: 15px;
+    }
+
+    .seat-map-container {
+        padding: 10px;
+    }
+
+    .seat-legend {
+        font-size: 12px;
+    }
+
+    .seat-legend span {
+        margin: 0 5px;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+}

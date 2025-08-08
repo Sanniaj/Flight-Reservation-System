@@ -1,11 +1,14 @@
+
 body{
-    background-image: url("background-picture/stephan-mahlke-lOrfvkBNEsE-unsplash.jpg");
+
+    background-image: url("../search-page/images/background-picture/stephan-mahlke-lOrfvkBNEsE-unsplash.jpg");
+
     background-position: center;
     background-size: cover;
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    position: relative;
+    position: relative; 
 }
 
 .frontpage-slogan{
@@ -27,7 +30,9 @@ body{
     font-style:italic;
     letter-spacing: 1px;
     color: rgba(245, 220, 200, 0.6);
+
 }
+
 
 /* layout for searchbox */
 .search-box{
@@ -47,6 +52,7 @@ body{
     height: 26px;
     align-items: center;
     justify-content: center;
+    /* background-color: black; */ 
 }
 
 /* 
@@ -71,6 +77,7 @@ border-radius   - round border by 10px
     height: 40px;
     font-size: 15px;
     padding-left: 30px;
+    /* background-color: burlywood; */
     border: none;
     border-radius: 10px;
     background-color: rgb(245, 240, 235)
@@ -108,13 +115,13 @@ Align-item: center - align button from top to bottom - center
 justify-content: center - align button from left to right - center
 ===============================================================================*/
 .swap-button-icon{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 /*===============================================================================
@@ -122,9 +129,10 @@ justify-content: center - align button from left to right - center
 set width+height for icon
 ===============================================================================*/
 .swap-button-icon img{
-    width: 40px;
+    width: 40px;    
     height:36px;
 }
+
 
 .calendar-box input{
     width:120px;
@@ -137,6 +145,7 @@ set width+height for icon
     background-color: rgb(245, 240, 235);
 }
 
+
 /* Search flight button layout */
 .layout-search-button{
     background-color: rgba(255, 255, 255, 0.1);
@@ -146,7 +155,7 @@ set width+height for icon
     border: none;
     cursor: pointer;
 }
-/* set mouse hover over search button to change color */
+ /* set mouse hover over search button to change color */
 .layout-search-button:hover{
     background-color: rgb(78, 152, 226) ;
 }

@@ -1,3 +1,11 @@
+/* Font import for LEMONMILK-REGULAR */
+@font-face {
+    font-family: 'LEMONMILK';
+    src: url('../shared code/assets/LEMONMILK-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -54,10 +62,12 @@ button:hover {
     max-width: 500px;
 }
 
-h1 {
+/* Update headers to use LEMONMILK font */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'LEMONMILK', Arial, sans-serif;
     color: #333;
     margin-bottom: 20px;
-    text-align: center
+    text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -78,7 +88,6 @@ h1 {
         max-width: 500px;
     }
 }
-
 
 #pricing {
     margin-top: 100px;
