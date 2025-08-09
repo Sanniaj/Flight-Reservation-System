@@ -3,9 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>Flight website front page</title>
-    <link rel="stylesheet" href="frontend-search-box.css">
-    <script src="../shared%20code/util/swap-button.js"></script>
-    <script type="module" src="flight-search-location.js"></script>
+
+    <link rel="stylesheet" href="/static/search-page/frontend-search-box.css">
+    <script src="/static/shared-code/util/swap-button.js"></script>
+    <script src="/static/search-page/frontend-search-location.js"></script>
+
 </head>
 
 <body>
@@ -23,22 +25,22 @@
     <div class="search-location">
         <!--class input-with-icon to group icon and input side by side -->
         <div class="input-with-icon">
-            <img src="images/icon-from.png" class="icon icon-layout" alt="From">
-            <input id="departure" type="text" placeholder="Try: LAX">
+            <img src="/static/search-page/images/icon-from.png" class="icon icon-layout" alt="From">
+            <input id="departure_airport" type="text" placeholder="Try: LAX">
         </div>
 
         <button class="swap-button-icon" aria-label="Switch location" onclick="swapperButton()">
-            <img src="images/icon-swap.png" class="icon" alt="Swap location">
+            <img src="/static/search-page/images/icon-swap.png" class="icon" alt="Swap location">
         </button>
 
         <div class="input-with-icon">
-            <img src="images/icon-to.png" class="icon icon-layout" alt="To">
-            <input id="arrival" type="text" placeholder="Try: JFK">
+            <img src="/static/search-page/images/icon-to.png" class="icon icon-layout" alt="To">
+            <input id="arrival_airport" type="text" placeholder="Try: JFK">
         </div>
 
         <!-- date input box -->
         <div class="calendar-box">
-            <input id="departureDate" type="date">
+            <input id="departure_date" type="date">
         </div>
 
         <!-- Search Fight button -->

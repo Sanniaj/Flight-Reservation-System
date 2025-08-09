@@ -1,8 +1,8 @@
 
 
 function swapperButton(){
-    const input1 = document.getElementById('departure');
-    const input2 = document.getElementById('arrival');
+    const input1 = document.getElementById('departure_airport');
+    const input2 = document.getElementById('arrival_airport');
     const text1 = input1.value;
     const text2 = input2.value;
 

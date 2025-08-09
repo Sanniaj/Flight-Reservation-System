@@ -1,5 +1,7 @@
 // flight-search-location.js - handles flight search functionality
-import {locationSearch} from "../shared code/util/locationSearch.js";
+// comment for now to avoid conflict with frontend-search-location.js
+
+//import {locationSearch} from "../shared code/util/locationSearch.js";
 
 // variables to store user's departure and arrival choice
 let departureLocation, arrivalLocation;
