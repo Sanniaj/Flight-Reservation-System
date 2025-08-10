@@ -5,10 +5,19 @@
  * path: help us work with file and folder path
  * fileURLToPath: convert the URL of this file (import.meta.url) into a file system path
  */
-import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+
+// modules
+import morgan from "morgan";
+import express from "express";
+
+//local project files
 import { loadFlights } from "./utils/load_flights.js";
+import { getFlights } from "./temp_storage/flights_storage.js";
+import flightSearchRouter from "./api/flight_search.js";
+import seatRouter from "./api/seat_router.js";
+
 
 /** create express application (new webserver) 
  * and choose a port number to listen on for incoming requests
@@ -16,19 +25,32 @@ import { loadFlights } from "./utils/load_flights.js";
 const app = express();
 const PORT = 3000;
 
-/** request logging
- * show each GET/POST request in the console
- * log status/time/size
- */
-import morgan from "morgan";
-app.use(morgan("dev"));
-
-//call load_flights
-loadFlights();
 
 /**get the absolute path to this file (__filename) and the folder it's in (__dirname)*/
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+
+
+/** extra things
+ * show each GET/POST request in the console
+ * log status/time/size
+ */
+app.use(morgan("dev"));
+
+
+
+
+
+//call and initialize flight data
+loadFlights();
+
+
+
+
+
+
+
 
 // serve static files from the search-page, result-page, confirmation-page, and checkout-page directories
 /** Make only the frontend folders accessible publicly
@@ -37,19 +59,47 @@ const __dirname = path.dirname(__filename);
  */
 app.use("/static", express.static(path.join(__dirname, "../flight-booking-system")));
 
+
+
+/* API routes */
+
+// call flightSearchRouter
+app.use("/api", flightSearchRouter);
+
+// call seat_router.js
+app.use("/api", seatRouter);
+
+
+
+
+
+// check server is working
+app.get("/api/health", (req, res) => res.status(200).json({ ok: true }));
+
+
+
+
+
 //set default route to main page (frontend-search-location.html)
 // serve the main search page
-
 app.get("/", (req, res) => {
     res.sendFile(
         path.join(__dirname, "../flight-booking-system/search-page/frontend-search-location.html")
     );
 });
 
-// check server is listening
-app.get("/api/health", (req, res) => {
-    res.status(200).json({ ok: true });
-});
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Start the server and listen on port (3000)
 app.listen(PORT, () => {
