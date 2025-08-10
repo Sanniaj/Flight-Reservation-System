@@ -1,17 +1,25 @@
 //import seat gen from k'yahn
-import { generateSeats } from '../shared code/util/SeatGen.js';
+// import { generateSeats } from '../shared code/util/SeatGen.js';
+
+
+//timmy
+async function fetchSeatMap() {
+    const response = await fetch("/api/seatgen");
+    const data = await response.json();
+    return data.SeatMap;
+}
 
 // array to store seats that have been selected
 let selectedSeats = [];
 
 // create seat map
-function createSeatMap() {
+export async function createSeatMap(flightID) {
     // generate a seat map with 10 rows and 6 seats per row (a-f)
-    const seatMap = generateSeats(10, 6);
+    const seatMap = await fetchSeatMap();
 
     // html for the seat map
     let html = `
-        <div class="seat-map-container" style="display:none;" id="seatMap">
+        <div class="seat-map-container" style="display:none;" id="seatMap-${flightID}">
             <h4>Select Your Seats</h4>
             <p>Blue = Available | Red = Occupied | Green = Selected</p>`;
 
@@ -35,6 +43,7 @@ function createSeatMap() {
     html += `<p>Selected: <span id="selectedList">None</span></p></div>`;
     return html;
 }
+console.log('[seat-selection] exported createSeatMap')
 
 // seat selection function
 window.selectSeat = function(seatLabel) {
@@ -77,10 +86,11 @@ function updateSummary() {
 }
 
 // show/hide seats function
-window.showSeats = function() {
+window.showSeats = function(flightID) {
     // get the seat map container and button
-    const container = document.getElementById('seatMap');
-    const button = document.getElementById('seatBtn');
+    const container = document.getElementById(`seatMap-${flightID}`);
+    const button = document.getElementById(`seatBtn-${flightID}`);
+    if(!container || !button) return;
 
     // toggle visibility of seat map
     if (container.style.display === 'none') {
@@ -112,33 +122,33 @@ window.goToCheckout = function() {
     window.location.href = `../checkout-page/checkout-page.html?${urlParams.toString()}`;
 };
 
-// display flights function
-function displayFlights() {
-    // get the container where flights will be displayed
-    const container = document.getElementById("searchFlights");
+// // display flights function
+// async function displayFlights() {
+//     // get the container where flights will be displayed
+//     const container = document.getElementById("searchFlights");
 
-    // create html for flight display with seat selection
-    const html = `
-        <h2>Available Flights</h2>
-        <div class="flight-info">
-            <h3>American Airlines - FL1001</h3>
-            <p>LAX → JFK | 08:00 | 5h 30m</p>
+//     // create html for flight display with seat selection
+//     const html = `
+//         <h2>Available Flights</h2>
+//         <div class="flight-info">
+//             <h3>American Airlines - FL1001</h3>
+//             <p>LAX → JFK | 08:00 | 5h 30m</p>
             
-            <button id="seatBtn" onclick="showSeats()">Select Seats</button>
-            ${createSeatMap()}
+//             <button id="seatBtn" onclick="showSeats()">Select Seats</button>
+//             ${createSeatMap()}
             
-            <button id="continueBtn" onclick="goToCheckout()" disabled>Continue to Checkout</button>
-        </div>
-    `;
+//             <button id="continueBtn" onclick="goToCheckout()" disabled>Continue to Checkout</button>
+//         </div>
+//     `;
 
-    // put the html into the container
-    container.innerHTML = html;
-}
+//     // put the html into the container
+//     container.innerHTML = html;
+// }
 
 // initialize when page loads
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // only run if we're on the search flights page
     if (document.getElementById('searchFlights')) {
-        displayFlights();
+        await displayFlights();
     }
 });
