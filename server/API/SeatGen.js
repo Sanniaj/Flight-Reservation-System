@@ -36,3 +36,4 @@ export function printSeatMap(seatMap)
     console.log(rowDisplay);
   }
 }
+

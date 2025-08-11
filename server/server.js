@@ -77,11 +77,15 @@ app.use("/api", seatRouter);
 app.get("/api/health", (req, res) => res.status(200).json({ ok: true }));
 
 
+ 
 
 
-
-//set default route to main page (frontend-search-location.html)
-// serve the main search page
+// our default route when running the server
+// basically front page when pasted url: localhost:3000
+// 
+// starting the server steps:
+// need to be in server folder, ex: \GitHub\likeag6\server> 
+// input 'npm start' -> enter 
 app.get("/", (req, res) => {
     res.sendFile(
         path.join(__dirname, "../flight-booking-system/search-page/frontend-search-location.html")
@@ -105,3 +109,4 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
