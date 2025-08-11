@@ -1,154 +1,184 @@
-//import seat gen from k'yahn
-// import { generateSeats } from '../shared code/util/SeatGen.js';
+// Fixed seat-selection.js with improvements
+
+// Store selected seats per flight ID to avoid conflicts
+const selectedSeatsPerFlight = {};
 
 
-//timmy
-async function fetchSeatMap() {
-    const response = await fetch("/api/seatgen");
-    const data = await response.json();
-    return data.SeatMap;
+
+// Generate random occupied seats
+function generateRandomOccupiedSeats() {
+    const occupiedSeats = new Set();
+    const occupancyRate = Math.random() * 0.75; // 0-75% occupancy
+    const targetOccupied = Math.floor(60 * occupancyRate);
+
+    const rows = 10;
+    const seatsPerRow = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+    while (occupiedSeats.size < targetOccupied) {
+        const randomRow = Math.floor(Math.random() * rows) + 1;
+        const randomSeat = seatsPerRow[Math.floor(Math.random() * seatsPerRow.length)];
+        const seatLabel = `${randomRow}${randomSeat}`;
+        occupiedSeats.add(seatLabel);
+    }
+
+    return Array.from(occupiedSeats);
 }
 
-// array to store seats that have been selected
-let selectedSeats = [];
+// Improved fetchSeatMap with fallback
+async function fetchSeatMap() {
+    try {
+        const response = await fetch("/api/seatgen");
+        if (!response.ok) {
+            throw new Error('API request failed');
+        }
+        const data = await response.json();
+        return data.SeatMap;
+    } catch (error) {
+        console.warn('Failed to fetch seat map from API, using fallback:', error);
+        return generateFallbackSeatMap();
+    }
+}
 
-// create seat map
+// Create seat map with flight-specific handling
 export async function createSeatMap(flightID) {
-    // generate a seat map with 10 rows and 6 seats per row (a-f)
+    // Initialize selected seats for this flight if not exists
+    if (!selectedSeatsPerFlight[flightID]) {
+        selectedSeatsPerFlight[flightID] = [];
+    }
+
     const seatMap = await fetchSeatMap();
 
-    // html for the seat map
+    // Generate random occupied seats
+    const occupiedSeats = generateRandomOccupiedSeats();
+
     let html = `
         <div class="seat-map-container" style="display:none;" id="seatMap-${flightID}">
             <h4>Select Your Seats</h4>
             <p>Blue = Available | Red = Occupied | Green = Selected</p>`;
 
-    // loop through each row to make seats
+    // Loop through each row to create seats
     seatMap.forEach(row => {
         html += '<div class="seat-row">';
         row.forEach((seat, j) => {
-            // make some seats occupied for demo, not yet randomized
-            const isOccupied = ['1A', '1B', '3C', '5F', '7D'].includes(seat.label);
-            // set seat class based on availability
-            const seatClass = isOccupied ? 'occupied' : 'available';
-            // create clickable seat element
-            html += `<div class="seat ${seatClass}" onclick="selectSeat('${seat.label}')">${seat.label}</div>`;
-            // add aisle space after seat c
+            // Check if this seat is randomly occupied
+            const isOccupied = occupiedSeats.includes(seat.label);
+            const isSelected = selectedSeatsPerFlight[flightID].includes(seat.label);
+
+            let seatClass = 'available';
+            if (isOccupied) seatClass = 'occupied';
+            else if (isSelected) seatClass = 'selected';
+
+            html += `<div class="seat ${seatClass}" onclick="selectSeat('${seat.label}', '${flightID}')">${seat.label}</div>`;
+
+            // Add aisle space after seat C
             if (j === 2) html += '<div class="aisle"></div>';
         });
         html += '</div>';
     });
 
-    // add selected seats display area
-    html += `<p>Selected: <span id="selectedList">None</span></p></div>`;
+    // Add summary section
+    html += `<p>Selected: <span id="selectedList-${flightID}">None</span></p></div>`;
+
     return html;
 }
-console.log('[seat-selection] exported createSeatMap')
 
-// seat selection function
-window.selectSeat = function(seatLabel) {
-    // find the seat element that was clicked
-    const seatElement = document.querySelector(`[onclick="selectSeat('${seatLabel}')"]`);
+// Improved seat selection with flight-specific handling
+window.selectSeat = function(seatLabel, flightID) {
+    const seatElement = document.querySelector(`#seatMap-${flightID} [onclick="selectSeat('${seatLabel}', '${flightID}')"]`);
 
-    // don't allow selection of occupied seats
-    if (seatElement.classList.contains('occupied')) return;
+    if (!seatElement || seatElement.classList.contains('occupied')) {
+        return;
+    }
 
-    // check if seat is already selected
-    if (selectedSeats.includes(seatLabel)) {
-        // deselect the seat, remove from array and change color
-        selectedSeats = selectedSeats.filter(s => s !== seatLabel);
+    // Get current selections for this flight
+    let currentSelections = selectedSeatsPerFlight[flightID] || [];
+
+    if (currentSelections.includes(seatLabel)) {
+        // Deselect seat
+        selectedSeatsPerFlight[flightID] = currentSelections.filter(s => s !== seatLabel);
         seatElement.className = 'seat available';
     } else {
-        // select the seat, add to array and change color
-        selectedSeats.push(seatLabel);
+        // Select seat
+        selectedSeatsPerFlight[flightID].push(seatLabel);
         seatElement.className = 'seat selected';
     }
 
-    // update the display of selected seats
-    updateSummary();
+    updateSummary(flightID);
 };
 
-// update selected seats display
-function updateSummary() {
-    // find the element that shows selected seats
-    const listEl = document.getElementById('selectedList');
+// Update summary for specific flight
+function updateSummary(flightID) {
+    const selectedSeats = selectedSeatsPerFlight[flightID] || [];
+    const listEl = document.getElementById(`selectedList-${flightID}`);
+
     if (listEl) {
-        // show selected seats or none if nothing selected
         listEl.textContent = selectedSeats.length > 0 ? selectedSeats.join(', ') : 'None';
     }
 
-    // enable/disable continue button based on seat selection
+    // Enable/disable continue button
     const btn = document.getElementById('continueBtn');
     if (btn) {
-        // disable button if no seats selected
-        btn.disabled = selectedSeats.length === 0;
+        const hasSelections = Object.values(selectedSeatsPerFlight).some(seats => seats.length > 0);
+        btn.disabled = !hasSelections;
     }
 }
 
-// show/hide seats function
+// Show/hide seats function (unchanged but improved)
 window.showSeats = function(flightID) {
-    // get the seat map container and button
     const container = document.getElementById(`seatMap-${flightID}`);
     const button = document.getElementById(`seatBtn-${flightID}`);
-    if(!container || !button) return;
 
-    // toggle visibility of seat map
-    if (container.style.display === 'none') {
-        // show the seat map
+    if (!container || !button) {
+        console.error(`Elements not found for flight ${flightID}`);
+        return;
+    }
+
+    if (container.style.display === 'none' || container.style.display === '') {
         container.style.display = 'block';
         button.textContent = 'Hide Seats';
+        // Initialize summary when showing
+        updateSummary(flightID);
     } else {
-        // hide the seat map
         container.style.display = 'none';
         button.textContent = 'Select Seats';
     }
 };
 
-// go to checkout (no pricing logic yet)
+// Improved checkout function
 window.goToCheckout = function() {
-    // make sure user selected at least one seat
-    if (selectedSeats.length === 0) {
-        alert('Please select at least one seat.');
+    // get all selected seats across all flights
+    let allSelectedSeats = [];
+    let selectedFlightId = '';
+    let selectedPrice = '';
+
+    // find the first flight that has selected seats
+    Object.keys(selectedSeatsPerFlight).forEach(flightID => {
+        const seats = selectedSeatsPerFlight[flightID];
+        if (seats.length > 0) {
+            allSelectedSeats = seats;
+            selectedFlightId = flightID;
+
+            // get price from flight results data
+            const flightData = JSON.parse(localStorage.getItem('flightResults') || '[]');
+            const flight = flightData.find(f => f.flight_id === flightID);
+            selectedPrice = flight ? flight.price : '299';
+        }
+    });
+
+    if (allSelectedSeats.length === 0) {
+        alert('Please select at least one seat before continuing.');
         return;
     }
 
-    // create url parameters to pass selected seats to checkout page
+    // create url parameters with the selected seats
     const urlParams = new URLSearchParams({
-        flightId: 'FL1001',
-        selectedSeats: selectedSeats.join(',')
+        flightId: selectedFlightId,
+        price: selectedPrice,
+        selectedSeats: allSelectedSeats.join(',')
     });
 
-    // navigate to checkout page with seat info
+    // navigate to checkout with proper parameters
     window.location.href = `../checkout-page/checkout-page.html?${urlParams.toString()}`;
 };
 
-// // display flights function
-// async function displayFlights() {
-//     // get the container where flights will be displayed
-//     const container = document.getElementById("searchFlights");
-
-//     // create html for flight display with seat selection
-//     const html = `
-//         <h2>Available Flights</h2>
-//         <div class="flight-info">
-//             <h3>American Airlines - FL1001</h3>
-//             <p>LAX → JFK | 08:00 | 5h 30m</p>
-            
-//             <button id="seatBtn" onclick="showSeats()">Select Seats</button>
-//             ${createSeatMap()}
-            
-//             <button id="continueBtn" onclick="goToCheckout()" disabled>Continue to Checkout</button>
-//         </div>
-//     `;
-
-//     // put the html into the container
-//     container.innerHTML = html;
-// }
-
-// initialize when page loads
-document.addEventListener('DOMContentLoaded', async () => {
-    // only run if we're on the search flights page
-    if (document.getElementById('searchFlights')) {
-        await displayFlights();
-    }
-});
+console.log('[seat-selection] Fixed version loaded');
