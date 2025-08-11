@@ -1,123 +1,111 @@
-// checkout-page.js handles customer data and order processing
 
-// customer class to store passenger info
-class Customer {
-    constructor(fname,lname,email,address,city,state,zip,country,phone) {
-        this.fname = fname;
-        this.lname = lname;
-        this.email = email;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.country = country;
-        this.phone = phone;
-        // generate confirmation number when customer is created
-        this.confirmationNumber = this.generateConfirmationNumber();
+// helper functions for data extraction
+const FormDataExtractor = {
+    // Extract customer data from form
+    getCustomerDataFromForm() {
+        return {
+            first_name: document.getElementById("first_name").value,
+            last_name: document.getElementById("last_name").value,
+            email: document.getElementById("email").value,
+            address: document.getElementById("address").value,
+            city: document.getElementById("city").value,
+            state: document.getElementById("state").value,
+            zip: document.getElementById("zip").value,
+            country: document.getElementById("country").value,
+            phone: document.getElementById("phone").value
+        };
+    },
+
+    // get flight data from URL and localStorage
+    getFlightData() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const flightId = urlParams.get('flightId') || 'FL1001';
+        const price = urlParams.get('price') || '299';
+        const selectedSeats = urlParams.get('selectedSeats') || '';
+
+        // get the flight details from localStorage
+        const flightData = JSON.parse(localStorage.getItem('flightResults') || '[]');
+        const selectedFlight = flightData.find(f => f.flight_id === flightId);
+
+        if (!selectedFlight) {
+            alert('Flight information not found. Please go back and select a flight again.');
+            return false;
+        }
+
+        return {
+            flight: {
+                flight_id: flightId,
+                departure_airport: selectedFlight.departure_airport,
+                arrival_airport: selectedFlight.arrival_airport,
+                departure_date: selectedFlight.departure_date,
+                departure_time: selectedFlight.departure_time,
+                price: price
+            },
+            selectedSeats: selectedSeats
+        };
     }
+};
 
-    // generate confirmation number based on current date/time
-    generateConfirmationNumber() {
-        const now = new Date();
-
-        // create date string in yymmdd format
-        const dateStr = now.getFullYear().toString().slice(-2) +
-            String(now.getMonth() + 1).padStart(2, '0') +
-            String(now.getDate()).padStart(2, '0');
-
-        // create time string with hours, minutes, and random number
-        const timeStr = String(now.getHours()).padStart(2, '0') +
-            String(now.getMinutes()).padStart(2, '0') +
-            String(Math.floor(Math.random() * 100)).padStart(2, '0');
-
-        // combine with "fl" prefix
-        return `FL${dateStr}${timeStr}`;
-    }
-}
-
-// array to store all customer objects
-let customerArray = [];
-
-// function to handle form submission and create new customer
-const addNewCustomer = (event) => {
-    // prevent form from doing default submit action
+//form submission handler
+const addNewCustomer = async (event) => {
     event.preventDefault();
 
-    // get all form values from input fields
-    const firstName = document.getElementById("first_name").value;
-    const lastName = document.getElementById("last_name").value;
-    const email = document.getElementById("email").value;
-    const address = document.getElementById("address").value;
-    const city = document.getElementById("city").value;
-    const state = document.getElementById("state").value;
-    const zip = document.getElementById("zip").value;
-    const country = document.getElementById("country").value;
-    const phone = document.getElementById("phone").value;
+    // extract necessary data
+    const customerData = FormDataExtractor.getCustomerDataFromForm();
+    const { flight, selectedSeats } = FormDataExtractor.getFlightData();
 
-    // create new customer object with form data
-    const newCustomer = new Customer(firstName, lastName, email, address, city, state, zip, country, phone);
+    // create booking with the booking class
+    const newBooking = window.bookingManager.createBooking(
+        flight,
+        selectedSeats,
+        customerData
+    );
 
-    // add customer to our array
-    customerArray.push(newCustomer);
-
-    // make customer array available globally (for debugging/other scripts)
-    window.customerArray = customerArray;
-
-    // get flight info from url parameters (passed from previous page)
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // create parameters to pass to confirmation page
+    // prepare confirmation page parameters
     const confirmationParams = new URLSearchParams({
-        confirmation: newCustomer.confirmationNumber,
-        flightId: urlParams.get('flightId') || 'FL1001',
-        price: urlParams.get('price') || '299',
-        selectedSeats: urlParams.get('selectedSeats') || '',
-        firstName: firstName,
-        lastName: lastName,
-        email: email
+        confirmation: newBooking.confirmation,
+        flightId: flight.flight_id,
+        price: flight.price,
+        selectedSeats: selectedSeats,
+        firstName: customerData.first_name,
+        lastName: customerData.last_name,
+        email: customerData.email
     });
 
-    // redirect to confirmation page with all booking details
+    // redirect to confirmation page
     window.location.href = `../confirmation-page/confirmation.html?${confirmationParams.toString()}`;
 
-    // return false to prevent any default form submission
     return false;
 };
 
-// function to display order summary on checkout page
+// order summary display function
 function displayOrderSummary() {
-    // get flight details from url parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const flightId = urlParams.get('flightId') || 'FL1001';
-    const price = urlParams.get('price') || '299';
-    const selectedSeats = urlParams.get('selectedSeats') || '';
-
-    // find the pricing display area
+    const { flight, selectedSeats } = FormDataExtractor.getFlightData();
     const pricingDiv = document.getElementById('pricing');
-    if (pricingDiv) {
-        // start building the summary html
-        let summaryHTML = `<h3>Flight: ${flightId}</h3>`;
 
-        // display selected seats if available
-        if (selectedSeats) {
-            // split seats string into array
-            const seatsArray = selectedSeats.split(',');
-            summaryHTML += `
-                <div class="seat-info">
-                    <h4>Selected Seats:</h4>
-                    <div class="seat-list">${seatsArray.join(', ')}</div>
-                    <small>${seatsArray.length} seat${seatsArray.length > 1 ? 's' : ''} selected</small>
-                </div>
-            `;
-        }
+    if (!pricingDiv) return;
 
-        // add total price to summary
-        summaryHTML += `<h3>Total: $${price}</h3>`;
+    let summaryHTML = `<h3>Flight: ${flight.flight_id}</h3>`;
 
-        // put the summary html into the pricing div
-        pricingDiv.innerHTML = summaryHTML;
+    // display selected seats available
+    if (selectedSeats) {
+        const seatsArray = selectedSeats.split(',');
+        summaryHTML += `
+            <div class="seat-info">
+                <h4>Selected Seats:</h4>
+                <div class="seat-list">${seatsArray.join(', ')}</div>
+                <small>${seatsArray.length} seat${seatsArray.length > 1 ? 's' : ''} selected</small>
+            </div>
+        `;
     }
+
+    summaryHTML += `
+        <h3>Subtotal: $${flight.price}</h3>
+        <h3>Total: $${flight.price}</h3>                   
+    `;
+
+    pricingDiv.innerHTML = summaryHTML;
 }
 
-// run order summary display when page loads
+// initialize when page loads
 document.addEventListener('DOMContentLoaded', displayOrderSummary);

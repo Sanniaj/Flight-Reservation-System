@@ -15,6 +15,25 @@ function displayConfirmation() {
     const lastName = urlParams.get('lastName') || '';
     const email = urlParams.get('email') || '';
 
+    // Reconstruct the booking data for logging
+    const bookingData = {
+        confirmation: confirmationNumber,
+        flight: {
+            flightId: flightId,
+            price: price
+        },
+        seats: selectedSeats,
+        customer: {
+            firstName: firstName,
+            lastName: lastName,
+            email: email
+        },
+        timestamp: new Date().toISOString()
+    };
+
+    // Log the booking data to console
+    console.log("Booking confirmed - data to be saved to booking.json:", bookingData);
+
     // fill in the confirmation number field
     document.getElementById('confirmation_number').value = confirmationNumber;
 
