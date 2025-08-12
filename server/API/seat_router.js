@@ -1,7 +1,7 @@
 /**
  * create router path for SeatGen.js
  * 
- * 
+ * reference incase forgot how to use: https://expressjs.com/en/guide/routing.html
  * 
  */
 

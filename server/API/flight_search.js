@@ -21,7 +21,6 @@
  */
 
 import express from "express";
-
 import { getFlights } from "../temp_storage/flights_storage.js";
 
 const router = express.Router(); 

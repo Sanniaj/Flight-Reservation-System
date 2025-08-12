@@ -4,12 +4,17 @@
  * purpose: a small program to combine flight details, seat selected from customer, 
  *  and customer informatinos into one data block so we can save it to a permanent data file.
  *  
- * 2. generate a new confirmation number everytime a customer book a flight.
- * 3. we will save this to data/booking.JSON
+ * 
+ * 
+ * 
+ * 
+ * 
+ * reference:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
  * 
  */
 class Booking{
-    constructor({ flight, seat, customer }) {
+    constructor({ flight, selectedSeat, customer }) {
 
         //flight details
         this.flightId =             flight.flight_id;
@@ -20,7 +25,7 @@ class Booking{
         this.price =                flight.price;
 
         // Seats number
-        this.seat = seat;        
+        this.selectedSeat = selectedSeat;        
 
         // customer's informations
         this.customer = {
@@ -30,7 +35,7 @@ class Booking{
             address:        customer.address,
             city:           customer.city,
             state:          customer.state,
-            zipcode:        customer.zip,
+            zip:            customer.zip,
             country:        customer.country,
             phone:          customer.phone        
         };
@@ -42,7 +47,7 @@ class Booking{
     generateConfirmation() {
         
         //get departure date
-        const cfmDate = this.departure_date || "";
+        const cfmDate = (this.departure_date || "").replace(/-/g, "");
         console.log("Date:", cfmDate);
 
         // get departure airport
@@ -55,11 +60,11 @@ class Booking{
 
         // get time 
         // -TODO need to figure out a way to remove : from '10:30'
-        const cfmTime = this.departure_time || "";
+        const cfmTime = (this.departure_time || "").replace(/:/g, "");
         console.log("Time :", cfmTime);
 
         // combine the suff into confirmation code.
-        const confirmationCode = `CFN${cfmDate}${cfmDeparture}${cfmFlightID}${cfmTime}`;
+        const confirmationCode = `${cfmFlightID}-${cfmDeparture}-${cfmDate}-${cfmTime}`;
         console.log("Confirmation number:", confirmationCode);
 
         return confirmationCode;
@@ -67,6 +72,7 @@ class Booking{
 
 }
 
+export default Booking;
 
 
 
@@ -78,17 +84,14 @@ class Booking{
 
 
 
+/* testing data
 
-
-
-
-// testing
 const testFlight = {
     flight_id: 'F20008',
     departure_airport: 'LAX',
     arrival_airport: 'JFK',
     departure_date: '2025-08-17',
-    departure_time: '13:20',
+    departure_time: '13:20:03',
     price: 350
 };
 
@@ -108,8 +111,28 @@ const testSeat = '6A';
 
 const booking = new Booking({
     flight: testFlight,
-    seat: testSeat,
+    selectedSeat: testSelectedSeat,
     customer: testCustomerInfo
 });
 
 console.log("test booking:", booking);
+
+*/
+
+/*
+
+//testing replace()
+const paragraph = "i am timmy";
+console.log(paragraph + "\n");
+console.log("using replace()...\n");
+console.log(paragraph.replace("timmy", "replaced words \n"));
+console.log(paragraph);
+
+const departure_date = "2025-15-19";
+// const cfmDate = (departure_date || "").replace("-", "");
+// console.log("Date:", cfmDate);
+ 
+const cfmDate = (departure_date || "").replace(/-/g, "");
+console.log("replace all - from date: ", cfmDate);
+
+*/

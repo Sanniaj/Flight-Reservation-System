@@ -4,6 +4,9 @@
  * express: let us create a webserver and define API routes
  * path: help us work with file and folder path
  * fileURLToPath: convert the URL of this file (import.meta.url) into a file system path
+ * 
+ * for future references:
+ *  - https://expressjs.com/en/api.html
  */
 import path from "path";
 import { fileURLToPath } from "url";
@@ -17,6 +20,7 @@ import { loadFlights } from "./utils/load_flights.js";
 import { getFlights } from "./temp_storage/flights_storage.js";
 import flightSearchRouter from "./api/flight_search.js";
 import seatRouter from "./api/seat_router.js";
+import bookingRouter from "./api/booking_router.js";
 
 
 /** create express application (new webserver) 
@@ -32,12 +36,15 @@ const __dirname = path.dirname(__filename);
 
 
 
-/** extra things
+/** middleware - extra things
  * show each GET/POST request in the console
  * log status/time/size
  */
 app.use(morgan("dev"));
 
+//middleware to parse JSON
+// this is for checkout inputs. -> get user info (string) and parse it to an object  "name":timmy -> name: "timmy"
+app.use(express.json());
 
 
 
@@ -61,13 +68,20 @@ app.use("/static", express.static(path.join(__dirname, "../flight-booking-system
 
 
 
-/* API routes */
+/*===============================
+        API routes 
+=================================*/
 
 // call flightSearchRouter
 app.use("/api", flightSearchRouter);
 
 // call seat_router.js
 app.use("/api", seatRouter);
+
+// call booking)router.js
+app.use("/api", bookingRouter);
+
+
 
 
 

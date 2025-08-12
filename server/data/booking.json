@@ -1,0 +1,149 @@
+[
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "1B",
+    "customer": {
+      "first_name": "Timothy",
+      "last_name": "Do",
+      "email": "tmmy@yahoo.com",
+      "address": "12345 winnetka",
+      "city": "reseda",
+      "state": "Ca",
+      "zip": "91335",
+      "country": "United States",
+      "phone": "111 222 3333"
+    },
+    "confirmation": "F20001-LAX-20250813-1020"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "1B",
+    "customer": {
+      "first_name": "buzz",
+      "last_name": "",
+      "email": "",
+      "address": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "country": "",
+      "phone": ""
+    },
+    "confirmation": "F20001-LAX-20250813-1020"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "1B",
+    "customer": {
+      "first_name": "buzz",
+      "last_name": "Lightyear",
+      "email": "buzz@starcommand.space",
+      "address": "1 To-infinity",
+      "city": "ANDDDDDDD",
+      "state": "Be",
+      "zip": "99999",
+      "country": "Milkyway",
+      "phone": "1-800-BUZZ"
+    },
+    "confirmation": "F20001-LAX-20250813-1020"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "1B",
+    "customer": {
+      "first_name": "elsa",
+      "last_name": "Arendelle",
+      "email": "Elsa@frozen.com",
+      "address": "123 ice palace",
+      "city": "Arendelle",
+      "state": "Frozem",
+      "zip": "00000",
+      "country": "Somewhere Cold?",
+      "phone": "1-800-COLD"
+    },
+    "confirmation": "F20001-LAX-20250813-1020"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "1B",
+    "customer": {
+      "first_name": "11111111111111111111111111",
+      "last_name": "22222222222222222222222",
+      "email": "233333333333333333333333333@wherever",
+      "address": "4444444444444444444444444",
+      "city": "445555555555555555555555555",
+      "state": "555666666666666666666666666",
+      "zip": "77777777777777777777",
+      "country": "77888888888888888888",
+      "phone": "999999999999999999999"
+    },
+    "confirmation": "F20001-LAX-20250813-1020"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "1B",
+    "customer": {
+      "first_name": "testing testing",
+      "last_name": "do",
+      "email": "test@gmail.com",
+      "address": "123 testing",
+      "city": "testing citi",
+      "state": "testing State",
+      "zip": "99999",
+      "country": "testing Country",
+      "phone": "1-222-3333"
+    },
+    "confirmation": "F20001-LAX-20250813-1020"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "9F",
+    "customer": {
+      "first_name": "Seat test 9F",
+      "last_name": "Seat Test  9F",
+      "email": "Seat9FTest@yahoo.com",
+      "address": "Seat Test 9F",
+      "city": "Seat Test 9F",
+      "state": "Seat Test 9F",
+      "zip": "Seat Test 9F",
+      "country": "Seat Test 9F",
+      "phone": "Seat Test 9F"
+    },
+    "confirmation": "F20001-LAX-20250813-1020"
+  }
+]
