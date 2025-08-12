@@ -150,6 +150,7 @@ window.goToCheckout = function() {
     let allSelectedSeats = [];
     let selectedFlightId = '';
     let selectedPrice = '';
+    let selectedFlightObj = null;
 
     // find the first flight that has selected seats
     Object.keys(selectedSeatsPerFlight).forEach(flightID => {
@@ -162,6 +163,7 @@ window.goToCheckout = function() {
             const flightData = JSON.parse(localStorage.getItem('flightResults') || '[]');
             const flight = flightData.find(f => f.flight_id === flightID);
             selectedPrice = flight ? flight.price : '299';
+            selectedFlightObj = flight; //store flight object
         }
     });
 
@@ -169,6 +171,12 @@ window.goToCheckout = function() {
         alert('Please select at least one seat before continuing.');
         return;
     }
+
+
+    if(selectedFlightObj) {
+        localStorage.setItem("selectedFlight", JSON.stringify(selectedFlightObj));
+    }
+    localStorage.setItem("selectedSeat", allSelectedSeats[0]);
 
     // create url parameters with the selected seats
     const urlParams = new URLSearchParams({
