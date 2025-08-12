@@ -17,7 +17,7 @@ class Booking{
     constructor({ flight, selectedSeat, customer }) {
 
         //flight details
-        this.flight_Id =             flight.flight_id;
+        this.flightId =             flight.flight_id;
         this.departure_airport =    flight.departure_airport;
         this.arrival_airport =      flight.arrival_airport;
         this.departure_date =       flight.departure_date;
@@ -55,8 +55,8 @@ class Booking{
         console.log("Airport :", cfmDeparture);
 
         // get flight id
-        const cfm_flight_id= this.flight_id || "";
-        console.log("Flight_id:", cfm_flight_id);
+        const cfmFlightID= this.flightId || "";
+        console.log("FlightID:", cfmFlightID);
 
         // get time 
         // -TODO need to figure out a way to remove : from '10:30'
@@ -64,7 +64,7 @@ class Booking{
         console.log("Time :", cfmTime);
 
         // combine the suff into confirmation code.
-        const confirmationCode = `${cfm_flight_id}-${cfmDeparture}-${cfmDate}-${cfmTime}`;
+        const confirmationCode = `${cfmFlightID}-${cfmDeparture}-${cfmDate}-${cfmTime}`;
         console.log("Confirmation number:", confirmationCode);
 
         return confirmationCode;

@@ -52,13 +52,13 @@ const FormDataExtractor = {
 
 
         const urlParams = new URLSearchParams(window.location.search);
-        const flight_id = urlParams.get('flight_id') || 'FL1001';
+        const flightId = urlParams.get('flightId') || 'FL1001';
         const price = Number(urlParams.get('price')) || 299;
         const selectedSeat = urlParams.get('selectedSeat') || '';
 
         // get the flight details from localStorage
         const flightData = JSON.parse(localStorage.getItem('flightResults') || '[]');
-        const selectedFlight = flightData.find(f => f.flight_id === flight_id);
+        const selectedFlight = flightData.find(f => f.flight_id === flightId);
 
         if (!selectedFlight) {
             alert('Flight information not found. Please go back and select a flight again.');
@@ -67,7 +67,7 @@ const FormDataExtractor = {
 
         return {
             flight: {
-                flight_id: flight_id,
+                flight_id: flightId,
                 departure_airport: selectedFlight.departure_airport,
                 arrival_airport: selectedFlight.arrival_airport,
                 departure_date: selectedFlight.departure_date,
@@ -130,7 +130,7 @@ const addNewCustomer = async (event) => {
     // prepare confirmation page parameters
     const confirmationParams = new URLSearchParams({
         confirmation: savedBooking.confirmation,
-        flight_Id: flight.flight_id,
+        flightId: flight.flight_id,
         price: flight.price,
         seat: seat,
         firstName: customerData.first_name,
