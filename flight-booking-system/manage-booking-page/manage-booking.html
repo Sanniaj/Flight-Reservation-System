@@ -1,76 +1,99 @@
-<!-- 
- manage_booking.html - page for user to manage their booked flights
-
-search box to search user's flights
-
-include: 
-
-    ======= Find booking =======================
-    [ confirmation code ] [email] [Find Booking]
-
-    ============================================
-    sample flight 1
-        - flight details ect
-
-                                [cancel booking]
-    ============================================ 
--->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Your Booking</title>
+    <title>Manage Your Booking | Like a G6</title>
     <link rel="stylesheet" href="manage-booking.css">
 </head>
 <body>
 
 <header>
-    <h1>Manage Your Booking</h1>
+    <h1>Like a G6</h1>
+    <div class="tagline">Fly Beyond the Clouds</div>
     <nav>
         <a href="../search-page/frontend-search-location.html">New Search</a>
         <a href="admin-reports.html">Admin Reports</a>
+        <a href="#" style="color: #3b82f6; font-weight: 600;">Manage Booking</a>
     </nav>
 </header>
 
-<section id="lookup-section">
-    <h2>Find Your Booking</h2>
-    <form id="booking-lookup-form">
-        <div>
-            <label for="confirmation-number">Confirmation Number:</label>
-            <input type="text" id="confirmation-number" placeholder="FL240806001">
+<div class="container">
+    <section id="lookup-section">
+        <h2>Find Your Booking</h2>
+        <form id="booking-lookup-form">
+            <div class="form-group">
+                <label for="confirmation-number">Confirmation Number</label>
+                <input type="text" id="confirmation-number" placeholder="FL240806001">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="text" id="email" placeholder="your@email.com">
+            </div>
+            <button type="submit">Find Booking</button>
+        </form>
+    </section>
+
+    <!-- Booking Display Section (hidden initially) -->
+    <section id="booking-display" style="display: none;">
+        <h2>Your Booking Details</h2>
+        <div id="booking-info">
+            <!-- Sample booking details for demonstration -->
+            <div class="flight-details">
+                <div class="detail-item">
+                    <div class="detail-label">Flight Number</div>
+                    <div class="detail-value">G6-247</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">From</div>
+                    <div class="detail-value">Los Angeles (LAX)</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">To</div>
+                    <div class="detail-value">New York (JFK)</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Departure</div>
+                    <div class="detail-value">Aug 15, 2:30 PM</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Arrival</div>
+                    <div class="detail-value">Aug 15, 10:45 PM</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Status</div>
+                    <div class="detail-value" style="color: #3b82f6; font-weight: 700;">Confirmed</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Passenger</div>
+                    <div class="detail-value">John Smith</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Seat</div>
+                    <div class="detail-value">2A - First Class</div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="email">Email Address:</label>
-            <input type="text" id="email" placeholder="your@email.com">
+
+        <!-- Action Buttons -->
+        <div id="booking-actions">
+            <button id="reschedule-booking" class="action-btn primary">Reschedule Flight</button>
+            <button id="cancel-booking" class="action-btn danger">Cancel Booking</button>
         </div>
-        <button type="submit">Find Booking</button>
-    </form>
-</section>
+    </section>
 
-<!-- booking display section (hidden for now) -->
-<section id="booking-display" style="display: none;">
-    <h2>Your Booking Details</h2>
-    <div id="booking-info">
-        <!-- booking details will show up here -->
-    </div>
+    <!-- Reschedule Section (initially hidden) -->
+    <section id="reschedule-section" style="display: none;">
+        <h2>Reschedule Your Flight</h2>
+        <div id="available-flights">
+            <!-- Available flights for rescheduling will be shown here -->
+            <p style="color: #475569; text-align: center; padding: 40px;">
+                Available flights will be displayed here when you choose to reschedule.
+            </p>
+        </div>
+    </section>
+</div>
 
-    <!-- action Buttons -->
-    <div id="booking-actions">
-        <button id="cancel-booking" class="action-btn danger">Cancel Booking</button>
-        <button id="reschedule-booking" class="action-btn primary">Reschedule Flight</button>
-    </div>
-</section>
-
-<!-- reschedule Section (initially hidden) -->
-<section id="reschedule-section" style="display: none;">
-    <h2>Reschedule Your Flight</h2>
-    <div id="available-flights">
-        <!-- available flights for rescheduling will be shown here -->
-    </div>
-</section>
-
+<script src="manage-booking.js"></script>
 </body>
 </html>
