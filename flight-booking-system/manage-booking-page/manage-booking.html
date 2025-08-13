@@ -21,58 +21,56 @@ include:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Your Booking</title>
     <link rel="stylesheet" href="manage-booking.css">
-
-
 </head>
-
 <body>
-    <div class = "manage-booking-container" role ="main">
 
-        <h1> Manage Booking</h1>
+<header>
+    <h1>Manage Your Booking</h1>
+    <nav>
+        <a href="../search-page/frontend-search-location.html">New Search</a>
+        <a href="admin-reports.html">Admin Reports</a>
+    </nav>
+</header>
 
-        <section class = "find booked flights">
+<section id="lookup-section">
+    <h2>Find Your Booking</h2>
+    <form id="booking-lookup-form">
+        <div>
+            <label for="confirmation-number">Confirmation Number:</label>
+            <input type="text" id="confirmation-number" placeholder="FL240806001">
+        </div>
+        <div>
+            <label for="email">Email Address:</label>
+            <input type="text" id="email" placeholder="your@email.com">
+        </div>
+        <button type="submit">Find Booking</button>
+    </form>
+</section>
 
-            <div class = "search-confirmation">
-                <label for="cfm-code-input">Confirmation Code</label>
-                <input id="cfm-code-input" type="text" placeholder="CFM20250810LAX..." required />
-            </div>
-
-            <div class = "search-email">
-                <lavel for="email-input">your email</lavel>
-                <input id="email-input" type="text" placeholder="abcde@gmail.com">
-            </div>
-
-            <button id="search-button" class = "confirmation-search-button" type= "button">Find</button>
-
-        </section>
-
-        <section class = "display booked results">
-
-
-
-
-            
-        </section>
-
-
-
+<!-- booking display section (hidden for now) -->
+<section id="booking-display" style="display: none;">
+    <h2>Your Booking Details</h2>
+    <div id="booking-info">
+        <!-- booking details will show up here -->
     </div>
 
+    <!-- action Buttons -->
+    <div id="booking-actions">
+        <button id="cancel-booking" class="action-btn danger">Cancel Booking</button>
+        <button id="reschedule-booking" class="action-btn primary">Reschedule Flight</button>
+    </div>
+</section>
 
-
-
-
-
-
-
-
+<!-- reschedule Section (initially hidden) -->
+<section id="reschedule-section" style="display: none;">
+    <h2>Reschedule Your Flight</h2>
+    <div id="available-flights">
+        <!-- available flights for rescheduling will be shown here -->
+    </div>
+</section>
 
 </body>
-
-
 </html>
-
-
-
