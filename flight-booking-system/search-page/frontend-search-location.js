@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("Search Results:", data);
 
         //save results to local storage and go to results page
-        localStorage.setItem("flightResults", JSON.stringify(data.results));
+        localStorage.setItem("flightResults", JSON.stringify(data));
         window.location.href = "/static/results-page/flight-search-results.html";
 
     });
