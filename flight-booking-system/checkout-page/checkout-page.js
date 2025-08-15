@@ -1,9 +1,9 @@
 /**
  * checkout-page.js
- * 
+ *
  * path: flight-booking-system/checkout-page/checkout-page.js
- * what it do: 
- * 
+ * what it do:
+ *
  */
 
 
@@ -26,26 +26,26 @@ const FormDataExtractor = {
 
     // get flight data from URL and localStorage
     getFlightData() {
-        
+
         //get the flight and seat the user chose on our result page
         // and pass these objects to our checkout page
         let flightFromStorage = localStorage.getItem("selectedFlight");
-            // if there are data, turn JSON string to object  "name":"timmy"-> name: "timmy"
-            if(flightFromStorage){
-                flightFromStorage = JSON.parse(flightFromStorage);
-            } else {
-                flightFromStorage = null; //set to null if no data. 
-            }
+        // if there are data, turn JSON string to object  "name":"timmy"-> name: "timmy"
+        if(flightFromStorage){
+            flightFromStorage = JSON.parse(flightFromStorage);
+        } else {
+            flightFromStorage = null; //set to null if no data.
+        }
 
         let seatFromStorage = localStorage.getItem("selectedSeat"); // same with seat, check from local storage
-            if(!seatFromStorage) {
-                seatFromStorage = ""; // no seat, set to empty string  "    "
-            }
-        
-        // if find flight in local storage. 
-        if(flightFromStorage) { 
+        if(!seatFromStorage) {
+            seatFromStorage = ""; // no seat, set to empty string  "    "
+        }
+
+        // if find flight in local storage.
+        if(flightFromStorage) {
             return {
-                flight: flightFromStorage, // return full flight detail 
+                flight: flightFromStorage, // return full flight detail
                 selectedSeat: seatFromStorage // return seat number ect '6A'
             };
         }
@@ -54,7 +54,7 @@ const FormDataExtractor = {
         const urlParams = new URLSearchParams(window.location.search);
         const flightId = urlParams.get('flightId') || 'FL1001';
         const price = Number(urlParams.get('price')) || 299;
-        const selectedSeat = urlParams.get('selectedSeat') || '';
+        const selectedSeat = urlParams.get('selectedSeat') || urlParams.get('selectedSeats') || '';
 
         // get the flight details from localStorage
         const flightData = JSON.parse(localStorage.getItem('flightResults') || '[]');
@@ -82,11 +82,11 @@ const FormDataExtractor = {
 //form submission handler
 const addNewCustomer = async (event) => {
     event.preventDefault();
-    
+
     // extract necessary data
     const customerData = FormDataExtractor.getCustomerDataFromForm();
     const { flight, selectedSeat } = FormDataExtractor.getFlightData();
-    
+
     // seat part
     let seat = "";
     if(Array.isArray(selectedSeat)) { // if seat comes in an array ["6A", "1B"]
@@ -127,12 +127,12 @@ const addNewCustomer = async (event) => {
     //     customerData
     // );
 
-    // prepare confirmation page parameters
+    // prepare confirmation page parameters - FIXED: use correct parameter names
     const confirmationParams = new URLSearchParams({
         confirmation: savedBooking.confirmation,
         flightId: flight.flight_id,
         price: flight.price,
-        seat: seat,
+        selectedSeats: seat,  // Fixed: changed from 'seat' to 'selectedSeats' to match confirmation.js
         firstName: customerData.first_name,
         lastName: customerData.last_name,
         email: customerData.email
@@ -153,14 +153,12 @@ function displayOrderSummary() {
 
     let summaryHTML = `<h3>Flight: ${flight.flight_id}</h3>`;
 
-    // display selected seats available
+    // display selected seat
     if (selectedSeat) {
-        const seatsArray = selectedSeat.split(',');
         summaryHTML += `
             <div class="seat-info">
-                <h4>Selected Seats:</h4>
-                <div class="seat-list">${seatsArray.join(', ')}</div>
-                <small>${seatsArray.length} seat${seatsArray.length > 1 ? 's' : ''} selected</small>
+                <h4>Selected Seat:</h4>
+                <div class="seat-list">${selectedSeat}</div>
             </div>
         `;
     }

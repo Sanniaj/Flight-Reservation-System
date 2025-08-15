@@ -1,8 +1,3 @@
-/**
- * booking.js - Centralized booking management
- *
- * Single source of truth for booking operations, customer data, and confirmation generation
- */
 
 class Booking {
     constructor({ flight, seat, customer }) {

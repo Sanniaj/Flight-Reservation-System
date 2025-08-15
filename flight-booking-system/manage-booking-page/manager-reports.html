@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Reports | Like a G6</title>
+    <link rel="stylesheet" href="manager-reports.css">
+</head>
+<body>
+
+<header>
+    <h1>Like a G6</h1>
+    <div class="tagline">Fly Beyond the Clouds</div>
+    <nav>
+        <a href="../search-page/frontend-search-location.html">New Search</a>
+        <a href="manage-booking.html">Manage Booking</a>
+        <a href="#" style="color: #3b82f6; font-weight: 600;">Manager Reports</a>
+    </nav>
+</header>
+
+<div class="container">
+    <!-- Dashboard Overview Cards -->
+    <div class="dashboard-grid">
+        <div class="stats-card">
+            <h3>Total Bookings</h3>
+            <div class="stats-value" id="total-bookings">0</div>
+            <div class="stats-label">All Time</div>
+        </div>
+
+        <div class="stats-card">
+            <h3>Revenue</h3>
+            <div class="stats-value revenue-highlight" id="total-revenue">$0</div>
+            <div class="stats-label">Total Collected</div>
+        </div>
+
+
+    </div>
+
+    <!-- Recent Bookings Table -->
+    <div class="section">
+        <h2>All Bookings</h2>
+        <div id="bookings-table-container">
+            <table class="report-table">
+                <thead>
+                <tr>
+                    <th>Confirmation</th>
+                    <th>Passenger</th>
+                    <th>Flight ID</th>
+                    <th>Route</th>
+                    <th>Date & Time</th>
+                    <th>Seat</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody id="bookings-table-body">
+                <!-- Bookings will show up with JavaScript -->
+                <tr class="empty-state">
+                    <td colspan="7">No bookings found. Bookings will appear here when created.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="booking.js"></script>
+<script src="manager-reports.js"></script>
+</body>
+</html>

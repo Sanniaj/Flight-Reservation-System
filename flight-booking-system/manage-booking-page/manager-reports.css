@@ -1,0 +1,309 @@
+/* Like a G6 Aviation - Manager Reports Styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --g6-charcoal: #1a1a1a;
+    --g6-platinum: #e5e7eb;
+    --g6-cloud-white: #ffffff;
+    --g6-sky-blue: #0284c7;
+    --g6-deep-blue: #1e3a8a;
+    --g6-light-blue: #3b82f6;
+    --g6-gold: #d97706;
+    --g6-light-gray: #f0f8ff;
+    --g6-border: #bfdbfe;
+    --g6-text-secondary: #475569;
+    --g6-success: #10b981;
+    --g6-warning: #f59e0b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, var(--g6-light-gray) 0%, #dbeafe 100%);
+    color: var(--g6-charcoal);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, var(--g6-deep-blue) 0%, var(--g6-sky-blue) 100%);
+    color: var(--g6-cloud-white);
+    padding: 30px 40px;
+    margin-bottom: 40px;
+    border-bottom: 4px solid var(--g6-light-blue);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+}
+
+.tagline {
+    color: var(--g6-platinum);
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    color: var(--g6-cloud-white);
+    text-decoration: none;
+    margin-right: 35px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--g6-cloud-white);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.stats-card {
+    background: var(--g6-cloud-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(26, 26, 26, 0.08);
+    border: 1px solid var(--g6-border);
+    text-align: center;
+}
+
+.stats-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--g6-deep-blue);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stats-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--g6-sky-blue);
+    margin-bottom: 10px;
+}
+
+.stats-label {
+    font-size: 0.9rem;
+    color: var(--g6-text-secondary);
+    font-weight: 500;
+}
+
+.section {
+    background: var(--g6-cloud-white);
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(26, 26, 26, 0.08);
+    border: 1px solid var(--g6-border);
+}
+
+.section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: var(--g6-deep-blue);
+    border-bottom: 3px solid var(--g6-sky-blue);
+    padding-bottom: 10px;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.report-table th {
+    background: linear-gradient(135deg, var(--g6-deep-blue) 0%, var(--g6-sky-blue) 100%);
+    color: var(--g6-cloud-white);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.report-table th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.report-table th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+.report-table td {
+    padding: 15px;
+    border-bottom: 1px solid var(--g6-border);
+    font-weight: 500;
+}
+
+.report-table tr:hover {
+    background: var(--g6-light-gray);
+}
+
+.confirmation-code {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.9rem;
+    background: var(--g6-light-gray);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: var(--g6-deep-blue);
+    font-weight: 600;
+}
+
+.route-info {
+    color: var(--g6-deep-blue);
+    font-weight: 600;
+}
+
+.price-info {
+    color: var(--g6-gold);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.revenue-highlight {
+    color: var(--g6-gold);
+    font-weight: 700;
+}
+
+
+
+.empty-state {
+    text-align: center;
+    padding: 40px 30px;
+    color: var(--g6-text-secondary);
+    font-style: italic;
+}
+
+.seat-display {
+    background: var(--g6-sky-blue);
+    color: var(--g6-cloud-white);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.passenger-name {
+    color: var(--g6-deep-blue);
+    font-weight: 600;
+}
+
+.flight-id {
+    background: var(--g6-light-blue);
+    color: var(--g6-cloud-white);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.datetime-info {
+    font-size: 0.95rem;
+    color: var(--g6-text-secondary);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .section {
+        padding: 25px 20px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .report-table {
+        font-size: 0.9rem;
+    }
+
+    .report-table th, .report-table td {
+        padding: 10px 8px;
+    }
+
+    nav a {
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+
+    .stats-value {
+        font-size: 2rem;
+    }
+
+    /* Stack table horizontally on mobile for better readability */
+    .report-table, .report-table thead, .report-table tbody, .report-table th, .report-table td, .report-table tr {
+        display: block;
+    }
+
+    .report-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .report-table tr {
+        border: 1px solid var(--g6-border);
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 8px;
+        background: var(--g6-cloud-white);
+    }
+
+    .report-table td {
+        border: none;
+        position: relative;
+        padding: 8px 0 8px 35%;
+        text-align: right;
+    }
+
+    .report-table td:before {
+        content: attr(data-label) ": ";
+        position: absolute;
+        left: 0;
+        width: 30%;
+        text-align: left;
+        font-weight: 600;
+        color: var(--g6-deep-blue);
+    }
+}
