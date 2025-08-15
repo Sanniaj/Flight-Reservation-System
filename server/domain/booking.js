@@ -1,11 +1,47 @@
 /**
  * booking.js
  * 
- * purpose: a small program to combine flight details, seat selected from customer, 
- *  and customer informatinos into one data block so we can save it to a permanent data file.
+ * purpose: 
+ *  - a booking class that contain flight details, seat that customer selected, and customer informations
+ * 
+ * 
+ * 
+ * function: 
+ *
+ *  - setStatus()
+ *      @param {string} newStatus - new Booking status 
+ *
+ *  - getReport()
+ *      @return {object} - generate a booking summary for manager
+ * 
+ *  - generateConfirmation()
+ *      @return {string} - generate a confirmation code using flight details and booking time.
+ * 
+ * 
+ * parameters: 
  *  
+ * @param {Object} flight - the flight info
+ * @param {string} flight.flight_id - flight ID
+ * @param {string} flight.departure_airport - departure airport
+ * @param {string} flight.arrival_airport - arrival airport
+ * @param {string} flight.departure_date - date in YYYY-MM-DD
+ * @param {string} flight.departure_time - time in HH:MM or HH:MM:SS
+ * @param {number} flight.price - ticket price
  * 
+ * @param {string} selectedSeat - seat number
  * 
+ * @param {Object} customer - customer info
+ * @param {string} customer.first_name - first name
+ * @param {string} customer.last_name - last name
+ * @param {string} customer.email - email address
+ * @param {string} customer.address - street address
+ * @param {string} customer.city - city name
+ * @param {string} customer.state - state code
+ * @param {string} customer.zip - zip code
+ * @param {string} customer.country - country name
+ * @param {string} customer.phone - phone number
+ * 
+ * @param {string} [status="confirmed"] - booking status
  * 
  * 
  * 
@@ -13,8 +49,13 @@
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
  * 
  */
+export const BOOKING_STATUS = {
+    CONFIRMED : "CONFIRMED",
+    CANCELLED : "CANCELLED",
+}
+
 class Booking{
-    constructor({ flight, selectedSeat, customer }) {
+    constructor({ flight, selectedSeat, customer, status }) {
 
         //flight details
         this.flightId =             flight.flight_id;
@@ -40,9 +81,41 @@ class Booking{
             phone:          customer.phone        
         };
 
+        this.status = BOOKING_STATUS.CONFIRMED;
+
+
         // generate confirmation number
+        this.timestamp = new Date().toISOString();
         this.confirmation = this.generateConfirmation();
+
     }
+
+
+
+    // function to update flight status (flight - canceled, updated....)
+    setStatus(newStatus) {
+        this.status = newStatus;
+    }
+
+
+    // for manager to see report page. 
+    getReport() {
+        let fullName = this.customer.first_name + " " + this.customer.last_name;
+
+        return{
+            confirmation: this.confirmation,
+            flightId: this.flightId,
+            route: this.departure_airport + " to " + this.arrival_airport,
+            departure_date: this.departure_date,
+            departure_time: this.departure_time,
+            seat: this.selectedSeat,
+            customer: fullName,
+            status: this.status,
+            price: this.price
+
+        };
+    }
+
 
     generateConfirmation() {
         
@@ -59,9 +132,18 @@ class Booking{
         console.log("FlightID:", cfmFlightID);
 
         // get time 
-        // -TODO need to figure out a way to remove : from '10:30'
-        const cfmTime = (this.departure_time || "").replace(/:/g, "");
-        console.log("Time :", cfmTime);
+        // // -TODO need to figure out a way to remove : from '10:30'
+        // const cfmTime = (this.departure_time || "").replace(/:/g, "");
+        // console.log("Time :", cfmTime);
+
+        const date = new Date(this.timestamp);
+        const hour = String(date.getHours()).padStart(2, "0");
+        const minute = String(date.getMinutes()).padStart(2,"0");
+        const second = String(date.getSeconds()).padStart(2,"0");
+
+        const cfmTime = `${hour}${minute}${second}`;
+
+        console.log("BookingTime = ", cfmTime);
 
         // combine the suff into confirmation code.
         const confirmationCode = `${cfmFlightID}-${cfmDeparture}-${cfmDate}-${cfmTime}`;
@@ -73,6 +155,7 @@ class Booking{
 }
 
 export default Booking;
+ 
 
 
 
@@ -111,7 +194,7 @@ const testSeat = '6A';
 
 const booking = new Booking({
     flight: testFlight,
-    selectedSeat: testSelectedSeat,
+    selectedSeat: testSeat,
     customer: testCustomerInfo
 });
 
@@ -136,3 +219,7 @@ const cfmDate = (departure_date || "").replace(/-/g, "");
 console.log("replace all - from date: ", cfmDate);
 
 */
+
+
+
+

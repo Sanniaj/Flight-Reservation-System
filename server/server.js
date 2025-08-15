@@ -16,9 +16,7 @@ import morgan from "morgan";
 import express from "express";
 
 //local project files
-import { loadFlights } from "./utils/load_flights.js";
-import { getFlights } from "./temp_storage/flights_storage.js";
-import flightSearchRouter from "./api/flight_search.js";
+import flightSearchRouter from "./api/flight_search/flight_search_router.js";
 import seatRouter from "./api/seat_router.js";
 import bookingRouter from "./api/booking_router.js";
 
@@ -46,11 +44,6 @@ app.use(morgan("dev"));
 // this is for checkout inputs. -> get user info (string) and parse it to an object  "name":timmy -> name: "timmy"
 app.use(express.json());
 
-
-
-
-//call and initialize flight data
-loadFlights();
 
 
 

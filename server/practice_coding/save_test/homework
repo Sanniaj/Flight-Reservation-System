@@ -1,0 +1,35 @@
+
+
+
+class Person { 
+    String name;
+    int areaCode;
+    int phoneNum;
+
+    public String getTeleNum() {
+        return (Integer.toString(areaCode) + Integer.toString(phoneNum)); 
+    }
+}
+
+
+// The snippet of code after refactoring is below.
+// Assume Person class creates objects of the TelephoneNum class (currently not shown in the code snippet below).
+
+
+class Person {
+    String name;
+    TelephoneNum phoneNum;
+    public String getTeleNum() { return phoneNum.getTeleNum();}
+}
+
+class TelephoneNum {
+    int areaCode;
+    int phoneNum;
+
+    public String getTeleNum() {
+        return (Integer.toString(areaCode) + Integer.toString(phoneNum));
+    }
+}
+
+
+

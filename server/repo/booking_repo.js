@@ -2,11 +2,11 @@
  * 
  * booking_repository.js
  * 
- * purrpose: read data from booking.json
+ * purrpose: read and save data from booking.json
  * 
  *  function: 
  *      - loadBookings() -> read booking.json and return an array of booking objects
- *      = lookupBooking(confirmation, email) -> search the array using findBooking()
+ *      = saveBookings() -> take data and save to booking.json
  * 
  * important object: 
  *      - booking.confirmation
@@ -20,21 +20,33 @@
 
 import fs from "fs";
 import path from "path";
-import { findBooking } from "../API/booking/booking_lookup.js";
 
 // path to our booking.json
 const projectRoot = process.cwd(); //process.cwd() - current working directory - take you to our project root. ex: C:/Users/thinh/Documents/GitHub/likeag6/
-const bookingFilePath = path.join(projectRoot, "server", "data", "booking.json"); // expect output: C:/Users/thinh/Documents/GitHub/likeag6/server/data/booking.json
+const bookingFilePath = path.join(projectRoot, "data", "booking.json"); // expect output: C:/Users/thinh/Documents/GitHub/likeag6/server/data/booking.json
 
-// read booking.json and return an array -> loadBookings()
+
+
+
+/**
+ * 
+ * @returns {array} bookings list
+ */
 export function loadBookings() {
+
     const rawBookingJson = fs.readFileSync(bookingFilePath, "utf8");
+
     if (!rawBookingJson.trim()) return [];
     return JSON.parse(rawBookingJson);
 }
 
-// look for a booking using confirmation + email -> lookupBooking()
-export function lookupBooking(confirmation, email) {
-    const bookings = loadBookings();
-    return findBooking(bookings, confirmation, email);
+
+/**
+ * 
+ * @param {Array} bookings - list of booking objects. 
+ */
+export function saveBookings(bookings) {
+    const json = JSON.stringify(bookings, null, 2);
+    fs.writeFileSync(bookingFilePath, json, "utf8");
 }
+
