@@ -24,7 +24,24 @@ function generateRandomOccupiedSeats() {
     return Array.from(occupiedSeats);
 }
 
-// Improved fetchSeatMap with fallback
+// generate fallback seat map when API fails
+function generateFallbackSeatMap() {
+    const seatMap = [];
+    const rows = 10;
+    const seatsPerRow = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+    for (let row = 1; row <= rows; row++) {
+        const rowSeats = [];
+        seatsPerRow.forEach(letter => {
+            rowSeats.push({ label: `${row}${letter}` });
+        });
+        seatMap.push(rowSeats);
+    }
+
+    return seatMap;
+}
+
+// fetchSeatMap with fallback
 async function fetchSeatMap() {
     try {
         const response = await fetch("/api/seatgen");
@@ -90,7 +107,17 @@ window.selectSeat = function(seatLabel, flightID) {
         return;
     }
 
-    // Get current selections for this flight
+    // check if another flight already has selected seats
+    const otherFlightWithSeats = Object.keys(selectedSeatsPerFlight).find(id =>
+        id !== flightID && selectedSeatsPerFlight[id].length > 0
+    );
+
+    if (otherFlightWithSeats && !selectedSeatsPerFlight[flightID].includes(seatLabel)) {
+        alert('Please complete your selection with the current flight before selecting seats on another flight.');
+        return;
+    }
+
+    // get current selections for this flight
     let currentSelections = selectedSeatsPerFlight[flightID] || [];
 
     if (currentSelections.includes(seatLabel)) {
@@ -115,15 +142,15 @@ function updateSummary(flightID) {
         listEl.textContent = selectedSeats.length > 0 ? selectedSeats.join(', ') : 'None';
     }
 
-    // Enable/disable continue button
-    const btn = document.getElementById('continueBtn');
+    // enable/disable the specific continue button for this flight
+    const btn = document.getElementById(`continueBtn-${flightID}`);
     if (btn) {
-        const hasSelections = Object.values(selectedSeatsPerFlight).some(seats => seats.length > 0);
+        const hasSelections = selectedSeats.length > 0;
         btn.disabled = !hasSelections;
     }
 }
 
-// Show/hide seats function (unchanged but improved)
+// show/hide seats function (unchanged but improved)
 window.showSeats = function(flightID) {
     const container = document.getElementById(`seatMap-${flightID}`);
     const button = document.getElementById(`seatBtn-${flightID}`);
@@ -145,47 +172,34 @@ window.showSeats = function(flightID) {
 };
 
 // Improved checkout function
-window.goToCheckout = function() {
-    // get all selected seats across all flights
-    let allSelectedSeats = [];
-    let selectedFlightId = '';
-    let selectedPrice = '';
-    let selectedFlightObj = null;
+window.goToCheckout = function(flightID) {
+    // Get the selected seats for this specific flight
+    const selectedSeats = selectedSeatsPerFlight[flightID] || [];
 
-    // find the first flight that has selected seats
-    Object.keys(selectedSeatsPerFlight).forEach(flightID => {
-        const seats = selectedSeatsPerFlight[flightID];
-        if (seats.length > 0) {
-            allSelectedSeats = seats;
-            selectedFlightId = flightID;
-
-            // get price from flight results data
-            const flightData = JSON.parse(localStorage.getItem('flightResults') || '[]');
-            const flight = flightData.find(f => f.flight_id === flightID);
-            selectedPrice = flight ? flight.price : '299';
-            selectedFlightObj = flight; //store flight object
-        }
-    });
-
-    if (allSelectedSeats.length === 0) {
+    if (selectedSeats.length === 0) {
         alert('Please select at least one seat before continuing.');
         return;
     }
 
+    // Get flight data
+    const flightData = JSON.parse(localStorage.getItem('flightResults') || '[]');
+    const selectedFlightObj = flightData.find(f => f.flight_id === flightID);
+    const selectedPrice = selectedFlightObj ? selectedFlightObj.price : '299';
 
-    if(selectedFlightObj) {
+    // Store selected flight and seat data
+    if (selectedFlightObj) {
         localStorage.setItem("selectedFlight", JSON.stringify(selectedFlightObj));
     }
-    localStorage.setItem("selectedSeat", allSelectedSeats[0]);
+    localStorage.setItem("selectedSeat", selectedSeats.join(','));
 
-    // create url parameters with the selected seats
+    // create URL parameters with the selected seats
     const urlParams = new URLSearchParams({
-        flightId: selectedFlightId,
+        flightId: flightID,
         price: selectedPrice,
-        selectedSeats: allSelectedSeats.join(',')
+        selectedSeats: selectedSeats.join(',')
     });
 
-    // navigate to checkout with proper parameters
+    // navigate to checkout with parameters
     window.location.href = `../checkout-page/checkout-page.html?${urlParams.toString()}`;
 };
 

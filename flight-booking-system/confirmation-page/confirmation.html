@@ -13,22 +13,58 @@
     <div class="checkout-details-container">
         <h1>Booking Confirmed</h1>
         <div id="confirmation-details">
-            <label>Confirmation Number</label><br />
-            <input type="text" id="confirmation_number" readonly /><br />
-            <label>Passenger Name</label><br />
-            <input type="text" id="passenger_name" readonly /><br />
-            <label>Email</label><br />
-            <input type="text" id="passenger_email" readonly /><br />
-            <label>Flight</label><br />
-            <input type="text" id="flight_info" readonly /><br />
-            <label>Total Paid</label><br />
-            <input type="text" id="total_paid" readonly /><br />
+            <div class="form-group full-width">
+                <label for="confirmation_number">Confirmation Number</label>
+                <input type="text" id="confirmation_number" readonly />
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="passenger_name">Passenger Name</label>
+                    <input type="text" id="passenger_name" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="passenger_email">Email</label>
+                    <input type="text" id="passenger_email" readonly />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="flight_info">Flight</label>
+                    <input type="text" id="flight_info" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="total_paid">Total Paid</label>
+                    <input type="text" id="total_paid" readonly />
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="checkout-details-container">
         <h1>Next Steps</h1>
-        <p>Your booking is confirmed. Please save your confirmation number for future reference.</p>
+        <div class="next-steps-content">
+            <div class="step-item">
+                <h3>Save Your Confirmation</h3>
+                <p>Keep your confirmation number safe. You will need it to manage your booking or make any changes.</p>
+            </div>
+
+            <div class="step-item">
+                <h3>Review Your Details</h3>
+                <p>Please review all your booking information above to ensure everything is correct.</p>
+            </div>
+
+            <div class="step-item">
+                <h3>Manage Your Booking</h3>
+                <p>You can view or modify your booking anytime using the "Manage Booking" section on our website.</p>
+            </div>
+
+            <div class="step-item">
+                <h3>Booking Complete</h3>
+                <p>Thank you for choosing Like a G6 Aviation. Remember to stay fly Like a G6.</p>
+            </div>
+        </div>
     </div>
 </div>
 </body>

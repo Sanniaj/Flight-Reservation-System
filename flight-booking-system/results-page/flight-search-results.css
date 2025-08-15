@@ -1,175 +1,395 @@
+/* Like a G6 Aviation - Flight Search Results Styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+:root {
+    --g6-charcoal: #1a1a1a;
+    --g6-platinum: #e5e7eb;
+    --g6-cloud-white: #ffffff;
+    --g6-sky-blue: #0284c7;
+    --g6-deep-blue: #1e3a8a;
+    --g6-light-blue: #3b82f6;
+    --g6-gold: #d97706;
+    --g6-light-gray: #f0f8ff;
+    --g6-border: #bfdbfe;
+    --g6-text-secondary: #475569;
+    --g6-success: #10b981;
+    --g6-warning: #f59e0b;
+}
 
-/* Font import for LEMONMILK-REGULAR */
-/* @font-face {
-    font-family: 'LEMONMILK';
-    src: url('../shared-code/assets/LEMONMILK-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-} */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* Original flight info styles */
-.flight-info {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
-    font-family: Arial;
-    text-align: center;
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, var(--g6-light-gray) 0%, #dbeafe 100%);
+    color: var(--g6-charcoal);
+    line-height: 1.6;
+    min-height: 100vh;
     padding: 40px 20px;
+}
+
+#title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--g6-deep-blue);
+    margin-bottom: 40px;
+    letter-spacing: -0.025em;
+}
+
+#flight-results-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#flight-results-container > h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--g6-deep-blue);
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--g6-sky-blue);
+    padding-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Flight card styling */
+.flight-info {
+    background: var(--g6-cloud-white);
+    box-shadow: 0 4px 20px rgba(26, 26, 26, 0.08);
+    border-radius: 12px;
+    border: 1px solid var(--g6-border);
+    padding: 0;
     margin-bottom: 30px;
     position: relative;
+    overflow: hidden;
 }
 
-/* Update headers to use LEMONMILK font */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'LEMONMILK', Arial, sans-serif;
+.flight-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--g6-deep-blue) 0%, var(--g6-sky-blue) 100%);
 }
 
+/* Flight header section */
+.flight-header {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--g6-border);
+}
+
+.flight-info h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--g6-deep-blue);
+    margin: 0;
+    text-align: center;
+    letter-spacing: -0.025em;
+}
+
+/* Flight details grid */
+.flight-details {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    padding: 25px 30px;
+    align-items: center;
+}
+
+.route-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.airport {
+    text-align: center;
+}
+
+.airport-code {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--g6-deep-blue);
+    margin-bottom: 5px;
+    font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.route-arrow {
+    color: var(--g6-sky-blue);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.flight-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    text-align: center;
+}
+
+.meta-item {
+    background: var(--g6-light-gray);
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--g6-border);
+}
+
+.meta-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--g6-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.meta-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--g6-deep-blue);
+}
+
+.price-section {
+    text-align: center;
+    padding: 0 15px;
+}
+
+.price-label {
+    font-size: 0.9rem;
+    color: var(--g6-text-secondary);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.price-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--g6-gold);
+    margin: 0;
+}
+
+/* Action buttons section */
+.flight-actions {
+    padding: 20px 30px;
+    background: #fafbfc;
+    border-top: 1px solid var(--g6-border);
+}
+
+/* Reset paragraph styles inside flight-info */
+.flight-info p {
+    margin: 0;
+}
+
+/* Button styling */
 button {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--g6-deep-blue) 0%, var(--g6-sky-blue) 100%);
+    color: var(--g6-cloud-white);
+    padding: 14px 28px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    margin: 10px auto;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 15px auto;
     text-align: center;
     display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    min-width: 200px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, var(--g6-sky-blue) 0%, var(--g6-light-blue) 100%);
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.25);
+    transform: translateY(-2px);
 }
 
 button:disabled {
-    background-color: #6c757d;
+    background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
     cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+button:disabled:hover {
+    background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
+    transform: none;
+    box-shadow: none;
 }
 
 /* Seat display styles */
 .seat-map-container {
-    margin: 20px 0;
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #e9ecef;
+    margin: 30px 0;
+    background: linear-gradient(135deg, #f0f8ff 0%, #e0f2fe 100%);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--g6-border);
+    border-left: 4px solid var(--g6-light-blue);
 }
 
-.seat-map-header {
-    font-weight: bold;
+.seat-map-container h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
     margin-bottom: 15px;
-    color: #495057;
+    color: var(--g6-deep-blue);
     text-align: center;
-    font-family: 'LEMONMILK', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.seat-map-container p {
+    text-align: center;
+    margin: 15px 0 25px 0;
+    font-size: 1rem;
+    color: var(--g6-text-secondary);
+    font-weight: 500;
 }
 
 .seat-legend {
     text-align: center;
     margin: 10px 0 20px 0;
-    font-size: 14px;
-    color: #495057;
+    font-size: 0.95rem;
+    color: var(--g6-text-secondary);
+    font-weight: 500;
 }
 
 .seat-legend span {
-    margin: 0 10px;
+    margin: 0 15px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background: var(--g6-cloud-white);
+    border: 1px solid var(--g6-border);
 }
 
 .seat-row {
     display: flex;
     justify-content: center;
-    margin: 5px 0;
-    gap: 5px;
+    margin: 8px 0;
+    gap: 8px;
 }
 
 .seat {
-    width: 30px;
-    height: 30px;
-    border: 2px solid #007bff;
-    border-radius: 4px;
+    width: 35px;
+    height: 35px;
+    border: 2px solid var(--g6-sky-blue);
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
-    font-weight: bold;
+    font-size: 11px;
+    font-weight: 700;
     cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Monaco', 'Menlo', monospace;
 }
 
 .seat.available {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
+    background: var(--g6-sky-blue);
+    color: var(--g6-cloud-white);
+    border-color: var(--g6-sky-blue);
 }
 
 .seat.available:hover {
-    background-color: #0056b3;
+    background: var(--g6-deep-blue);
+    border-color: var(--g6-deep-blue);
+    transform: scale(1.1);
 }
 
 .seat.occupied {
-    background-color: #dc3545;
-    color: white;
-    border-color: #dc3545;
+    background: #dc2626;
+    color: var(--g6-cloud-white);
+    border-color: #dc2626;
     cursor: not-allowed;
 }
 
 .seat.selected {
-    background-color: #28a745;
-    color: white;
-    border-color: #28a745;
+    background: var(--g6-success);
+    color: var(--g6-cloud-white);
+    border-color: var(--g6-success);
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
 .aisle {
-    width: 20px;
+    width: 25px;
 }
 
-.price-breakdown {
-    margin: 15px 0;
+.seat-map-container > p:last-child {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--g6-border);
+    font-weight: 600;
+    color: var(--g6-deep-blue);
+    background: var(--g6-cloud-white);
     padding: 15px;
-    background-color: #f8f9fa;
     border-radius: 6px;
-    border-left: 4px solid #007bff;
-    text-align: left;
 }
 
-.total-price {
-    font-weight: bold;
-    font-size: 18px;
-    color: #007bff;
-    margin-top: 10px;
-}
-
-/* Summary styling for selected seats */
-#seatSummary-FL1001, #seatSummary-FL1002 {
-    margin: 15px 0;
-    padding: 10px;
-    background-color: #e9ecef;
-    border-radius: 4px;
-    font-size: 14px;
-    text-align: center;
+/* Selected seats display */
+#selectedList-F10001, #selectedList-F10002, #selectedList-F10003, #selectedList-F10004,
+#selectedList-F10005, #selectedList-F10006, #selectedList-F10007, #selectedList-F10008,
+#selectedList-F10009, #selectedList-F10010, #selectedList-F10011, #selectedList-F10012,
+#selectedList-F10013, #selectedList-F10014, #selectedList-F10015, #selectedList-F10016,
+#selectedList-F10017, #selectedList-F10018, #selectedList-F10019, #selectedList-F10020,
+#selectedList-F20001, #selectedList-F20002, #selectedList-F20003, #selectedList-F20004,
+#selectedList-F20005, #selectedList-F20006, #selectedList-F20007, #selectedList-F20008,
+#selectedList-F20009, #selectedList-F20010, #selectedList-F20011, #selectedList-F20012,
+#selectedList-F20013, #selectedList-F20014, #selectedList-F20015, #selectedList-F20016,
+#selectedList-F20017, #selectedList-F20018, #selectedList-F20019, #selectedList-F20020 {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-weight: 700;
+    color: var(--g6-success);
+    font-size: 1.1rem;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    #title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
     .flight-info {
-        padding: 20px 10px;
-        margin: 15px 5px;
+        padding: 20px 15px;
+        margin: 15px 0;
+    }
+
+    .flight-info h3 {
+        font-size: 1.3rem;
     }
 
     .seat {
-        width: 25px;
-        height: 25px;
+        width: 28px;
+        height: 28px;
         font-size: 9px;
     }
 
     .seat-row {
-        gap: 3px;
+        gap: 4px;
+        margin: 5px 0;
     }
 
     .aisle {
-        width: 15px;
+        width: 18px;
     }
 
     .seat-map-container {
-        padding: 10px;
+        padding: 15px;
     }
 
     .seat-legend {
@@ -177,8 +397,36 @@ button:disabled {
     }
 
     .seat-legend span {
-        margin: 0 5px;
+        margin: 0 8px 8px 0;
         display: inline-block;
-        margin-bottom: 5px;
+        font-size: 11px;
+        padding: 4px 8px;
     }
+
+    button {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        min-width: 180px;
+    }
+}
+
+/* Loading state */
+.loading {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--g6-text-secondary);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Empty state */
+.empty-results {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--g6-cloud-white);
+    border-radius: 12px;
+    border: 1px solid var(--g6-border);
+    color: var(--g6-text-secondary);
+    font-size: 1.2rem;
+    font-weight: 500;
 }

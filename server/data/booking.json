@@ -334,5 +334,110 @@
       "phone": "888 111 2222"
     },
     "confirmation": "F20017-SJC-20250822-1115"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "8C",
+    "customer": {
+      "first_name": "Sannia",
+      "last_name": "Jean",
+      "email": "jsannia0130@gmail.com",
+      "address": "9656 Palmetto Ave",
+      "city": "Fontana",
+      "state": "CA",
+      "zip": "92335",
+      "country": "United States",
+      "phone": "6264211672"
+    },
+    "confirmation": "F20001-LAX-20250813-1020"
+  },
+  {
+    "flightId": "F20002",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "11:05",
+    "price": 365,
+    "selectedSeat": "6B",
+    "customer": {
+      "first_name": "Sannia",
+      "last_name": "Jean",
+      "email": "jsannia0130@gmail.com",
+      "address": "9656 Palmetto Ave",
+      "city": "Fontana",
+      "state": "CA",
+      "zip": "92335",
+      "country": "United States",
+      "phone": "6264211672"
+    },
+    "confirmation": "F20002-LAX-20250813-1105"
+  },
+  {
+    "flightId": "F20002",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "11:05",
+    "price": 365,
+    "selectedSeat": "6B",
+    "customer": {
+      "first_name": "Sannia",
+      "last_name": "Jean",
+      "email": "jsannia0130@gmail.com",
+      "address": "9656 Palmetto Ave",
+      "city": "Fontana",
+      "state": "CA",
+      "zip": "92335",
+      "country": "United States",
+      "phone": "6264211672"
+    },
+    "confirmation": "F20002-LAX-20250813-1105"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "3B",
+    "customer": {
+      "first_name": "Sannia",
+      "last_name": "Jean",
+      "email": "jsannia0130@gmail.com",
+      "address": "9656 Palmetto Ave",
+      "city": "Fontana",
+      "state": "CA",
+      "zip": "92335",
+      "country": "United States",
+      "phone": "6264211672"
+    },
+    "confirmation": "F20001-LAX-20250813-1020"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "2C,2B",
+    "customer": {
+      "first_name": "John",
+      "last_name": "Pork",
+      "email": "johnpork@ymail.com",
+      "address": "123 Bacon St",
+      "city": "Farmville",
+      "state": "KS",
+      "zip": "91234",
+      "country": "United States",
+      "phone": "626723819"
+    },
+    "confirmation": "F20001-LAX-20250813-1020"
   }
 ]

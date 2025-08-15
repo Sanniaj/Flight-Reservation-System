@@ -1,23 +1,34 @@
-/* Font import for LEMONMILK-REGULAR */
-@font-face {
-    font-family: 'LEMONMILK';
-    src: url('../shared code/assets/LEMONMILK-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+/* Like a G6 Aviation - Checkout Page Styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --g6-charcoal: #1a1a1a;
+    --g6-platinum: #e5e7eb;
+    --g6-cloud-white: #ffffff;
+    --g6-sky-blue: #0284c7;
+    --g6-deep-blue: #1e3a8a;
+    --g6-light-blue: #3b82f6;
+    --g6-gold: #d97706;
+    --g6-light-gray: #f0f8ff;
+    --g6-border: #bfdbfe;
+    --g6-text-secondary: #475569;
+    --g6-success: #10b981;
+    --g6-warning: #f59e0b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-}
-
-input {
-    width: 100%;
-    padding: 10px 15px;
-    margin: 10px 0;
-    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, var(--g6-light-gray) 0%, #dbeafe 100%);
+    color: var(--g6-charcoal);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 40px 20px;
 }
 
 #checkout-container {
@@ -27,68 +38,296 @@ input {
     align-items: flex-start;
     gap: 40px;
     margin: 0 auto;
-    padding: 20px;
-}
-
-label {
-    font-weight: bold;
-    color: #333;
-}
-
-button {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 10px auto 0 auto;
-    text-align: center;
-    display: block;
-}
-
-button:hover {
-    background-color: #0056b3;
+    max-width: 1200px;
 }
 
 .checkout-details-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: var(--g6-cloud-white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(26, 26, 26, 0.08);
+    border: 1px solid var(--g6-border);
     flex: 1;
-    min-width: 300px;
+    min-width: 350px;
     max-width: 500px;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Update headers to use LEMONMILK font */
+.checkout-details-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--g6-deep-blue) 0%, var(--g6-sky-blue) 100%);
+}
+
+/* Headers */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'LEMONMILK', Arial, sans-serif;
-    color: #333;
-    margin-bottom: 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--g6-deep-blue);
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 2rem;
+    letter-spacing: -0.025em;
+    border-bottom: 3px solid var(--g6-sky-blue);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.3rem;
+    color: var(--g6-deep-blue);
+}
+
+h4 {
+    font-size: 1.1rem;
+    color: var(--g6-text-secondary);
+    margin-bottom: 15px;
+}
+
+/* Form styling */
+form {
+    display: grid;
+    gap: 25px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-weight: 500;
+    color: var(--g6-deep-blue);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid var(--g6-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--g6-cloud-white);
+    color: var(--g6-charcoal);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin: 0;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--g6-sky-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+input::placeholder {
+    color: var(--g6-text-secondary);
+    font-weight: 300;
+}
+
+input[readonly] {
+    background: var(--g6-light-gray);
+    border-color: var(--g6-border);
+    color: var(--g6-text-secondary);
+    cursor: not-allowed;
+}
+
+/* Button styling */
+button {
+    background: linear-gradient(135deg, var(--g6-deep-blue) 0%, var(--g6-sky-blue) 100%);
+    color: var(--g6-cloud-white);
+    padding: 16px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    margin: 20px auto 0;
+    display: block;
+    min-width: 200px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, var(--g6-sky-blue) 0%, var(--g6-light-blue) 100%);
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Order Summary Styling */
+#pricing {
+    margin-top: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, #f0f8ff 0%, #e0f2fe 100%);
+    border-radius: 8px;
+    border: 1px solid var(--g6-border);
+    border-left: 4px solid var(--g6-light-blue);
+}
+
+#pricing h3 {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+#pricing h3:last-child {
+    border-top: 2px solid var(--g6-border);
+    padding-top: 15px;
+    margin-top: 20px;
+    font-size: 1.4rem;
+    color: var(--g6-gold);
+    font-weight: 700;
+}
+
+/* Seat info styling */
+.seat-info {
+    background: var(--g6-cloud-white);
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid var(--g6-border);
+    margin: 15px 0;
+}
+
+.seat-info h4 {
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 1rem;
+    color: var(--g6-deep-blue);
+}
+
+.seat-list {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--g6-success);
+    background: var(--g6-light-gray);
+    padding: 8px 12px;
+    border-radius: 4px;
     text-align: center;
 }
 
+/* Confirmation page specific styling */
+#confirmation-details {
+    display: grid;
+    gap: 20px;
+}
+
+#confirmation-details input {
+    font-weight: 500;
+}
+
+#confirmation_number {
+    font-family: 'Monaco', 'Menlo', monospace !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    background: var(--g6-light-gray) !important;
+    border: 2px solid var(--g6-success) !important;
+    color: var(--g6-success) !important;
+}
+
+/* Success styling for confirmation */
+.checkout-details-container:has(#confirmation-details)::before {
+    background: linear-gradient(135deg, var(--g6-success) 0%, #059669 100%);
+}
+
+.checkout-details-container:has(#confirmation-details) h1 {
+    color: var(--g6-success);
+    border-bottom-color: var(--g6-success);
+}
+
+/* Next steps section */
+.checkout-details-container:last-child p {
+    font-size: 1.1rem;
+    color: var(--g6-text-secondary);
+    line-height: 1.8;
+    text-align: center;
+    padding: 20px;
+    background: var(--g6-light-gray);
+    border-radius: 8px;
+    border: 1px solid var(--g6-border);
+}
+
+/* Mobile responsive */
 @media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+
     #checkout-container {
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 25px;
     }
 
     .checkout-details-container {
         width: 100%;
-        background-color: white;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        flex: 1;
-        min-width: 300px;
-        max-width: 500px;
+        padding: 25px 20px;
+        min-width: unset;
+        max-width: unset;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    input {
+        padding: 12px 16px;
+    }
+
+    button {
+        padding: 14px 28px;
+        font-size: 1rem;
+        min-width: 180px;
+    }
+
+    #pricing {
+        margin-top: 20px;
+        padding: 20px;
     }
 }
 
-#pricing {
-    margin-top: 100px;
+/* Loading states */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--g6-text-secondary);
+    font-style: italic;
+}
+
+/* Error states */
+.error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    text-align: center;
 }
