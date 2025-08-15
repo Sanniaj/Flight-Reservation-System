@@ -27,6 +27,7 @@ export function filterFlights(searchInput) {
 
         const thisFlight = new Flight (
             flightData.flight_id,
+            flightData.airline,
             flightData.departure_airport,
             flightData.arrival_airport,
             flightData.departure_date,

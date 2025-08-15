@@ -31,7 +31,7 @@
 
 
 import express from "express";
-import { filterFlights } from "../../service/flight_search_service.js";
+import { filterFlights } from "../service/flight_search_service.js";
 
 const flight_search_router = express.Router(); 
 

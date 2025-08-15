@@ -16,7 +16,7 @@ import morgan from "morgan";
 import express from "express";
 
 //local project files
-import flightSearchRouter from "./api/flight_search/flight_search_router.js";
+import flightSearchRouter from "./api/flight_search_router.js";
 import seatRouter from "./api/seat_router.js";
 import bookingRouter from "./api/booking_router.js";
 

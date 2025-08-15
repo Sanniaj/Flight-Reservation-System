@@ -9,6 +9,7 @@
 export class Flight{
     constructor (
         flight_id,
+        airline,
         departure_airport,
         arrival_airport,
         departure_date,
@@ -16,6 +17,7 @@ export class Flight{
         price
     ) {
         this.flight_id = flight_id;
+        this.airline = airline;
         this.departure_airport = departure_airport;
         this.arrival_airport = arrival_airport;
         this.departure_date = departure_date;
