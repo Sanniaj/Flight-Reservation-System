@@ -8,6 +8,8 @@
  * for future references:
  *  - https://expressjs.com/en/api.html
  */
+
+
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -15,10 +17,11 @@ import { fileURLToPath } from "url";
 import morgan from "morgan";
 import express from "express";
 
-//local project files
+//local api router
 import flightSearchRouter from "./api/flight_search_router.js";
 import seatRouter from "./api/seat_router.js";
 import bookingRouter from "./api/booking_router.js";
+import managerRouter from "./api/manager_router.js";
 
 
 /** create express application (new webserver) 
@@ -32,8 +35,6 @@ const PORT = 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
-
 /** middleware - extra things
  * show each GET/POST request in the console
  * log status/time/size
@@ -44,14 +45,6 @@ app.use(morgan("dev"));
 // this is for checkout inputs. -> get user info (string) and parse it to an object  "name":timmy -> name: "timmy"
 app.use(express.json());
 
-
-
-
-
-
-
-
-
 // serve static files from the search-page, result-page, confirmation-page, and checkout-page directories
 /** Make only the frontend folders accessible publicly
  * keep everything under /static to separete from /api
@@ -60,11 +53,8 @@ app.use(express.json());
 app.use("/static", express.static(path.join(__dirname, "../flight-booking-system")));
 
 
-
-/*===============================
-        API routes 
-=================================*/
-
+/*========== API routes ============*/
+       
 // call flightSearchRouter
 app.use("/api", flightSearchRouter);
 
@@ -74,17 +64,14 @@ app.use("/api", seatRouter);
 // call booking)router.js
 app.use("/api", bookingRouter);
 
+// call manager_router.js
+app.use("/api", managerRouter);
 
-
-
-
+/*===============================*/
 
 
 // check server is working
 app.get("/api/health", (req, res) => res.status(200).json({ ok: true }));
-
-
- 
 
 
 // our default route when running the server
@@ -98,18 +85,6 @@ app.get("/", (req, res) => {
         path.join(__dirname, "../flight-booking-system/search-page/frontend-search-location.html")
     );
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //Start the server and listen on port (3000)

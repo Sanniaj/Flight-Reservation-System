@@ -8,29 +8,6 @@
     "price": 365,
     "selectedSeat": "1F",
     "customer": {
-      "first_name": "Timothy",
-      "last_name": "Do",
-      "email": "thinh_do_94@yahoo.com",
-      "address": "19805 Hemmingway st",
-      "city": "Winnetka",
-      "state": "Ca",
-      "zip": "91306",
-      "country": "United States",
-      "phone": "7472309940"
-    },
-    "status": "CONFIRMED",
-    "timestamp": "2025-08-15T20:06:58.767Z",
-    "confirmation": "F20002-LAX-20250813-130658"
-  },
-  {
-    "flightId": "F20002",
-    "departure_airport": "LAX",
-    "arrival_airport": "JFK",
-    "departure_date": "2025-08-13",
-    "departure_time": "11:05",
-    "price": 365,
-    "selectedSeat": "1F",
-    "customer": {
       "first_name": "buzz",
       "last_name": "lightyear",
       "email": "buzz@starcommand.space",
@@ -75,7 +52,7 @@
     "departure_date": "2025-08-13",
     "departure_time": "10:20",
     "price": 355,
-    "selectedSeat": "1D",
+    "selectedSeat": "1E",
     "customer": {
       "first_name": "buzz",
       "last_name": "Lightyear",
@@ -88,7 +65,122 @@
       "phone": "1-800-ToInfinity"
     },
     "status": "CONFIRMED",
+    "timestamp": "2025-08-15T20:13:53.363Z",
+    "confirmation": "F20001-LAX-20250813-131352"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-13",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "1D",
+    "customer": {
+      "first_name": "buzz",
+      "last_name": "Lightyear",
+      "email": "buzz@starcommand.space",
+      "address": "1 StarCommand",
+      "city": "Earth",
+      "state": "milkyway",
+      "zip": "99999",
+      "country": "Galaxy",
+      "phone": "1-800-ToInfinity"
+    },
+    "status": "CANCELED",
     "timestamp": "2025-08-15T20:22:31.640Z",
     "confirmation": "F20001-LAX-20250813-132231"
+  },
+  {
+    "flightId": "F10001",
+    "departure_airport": "JFK",
+    "arrival_airport": "LAX",
+    "departure_date": "2025-08-18",
+    "departure_time": "08:30",
+    "price": 350,
+    "selectedSeat": "1E",
+    "customer": {
+      "first_name": "Tony",
+      "last_name": "Stark",
+      "email": "ironman@starkindustries.com",
+      "address": "10880 Malibu Point",
+      "city": "Malibu",
+      "state": "CA",
+      "zip": "90265",
+      "country": "USA",
+      "phone": "1-800-IAM-IRON"
+    },
+    "status": "CONFIRMED",
+    "timestamp": "2025-08-16T07:08:03.737Z",
+    "confirmation": "F10001-JFK-20250818-000803"
+  },
+  {
+    "flightId": "F10001",
+    "departure_airport": "JFK",
+    "arrival_airport": "LAX",
+    "departure_date": "2025-08-18",
+    "departure_time": "08:30",
+    "price": 350,
+    "selectedSeat": "1E",
+    "customer": {
+      "first_name": "Harry",
+      "last_name": "Potter",
+      "email": "harry.potter@hogwarts.edu",
+      "address": "4 Privet Drive",
+      "city": "Little Whinging",
+      "state": "Surrey",
+      "zip": "H0G",
+      "country": "UK",
+      "phone": "1-800-WIZARD"
+    },
+    "status": "CONFIRMED",
+    "timestamp": "2025-08-16T07:09:09.006Z",
+    "confirmation": "F10001-JFK-20250818-000909"
+  },
+  {
+    "flightId": "F10001",
+    "departure_airport": "JFK",
+    "arrival_airport": "LAX",
+    "departure_date": "2025-08-18",
+    "departure_time": "08:30",
+    "price": 350,
+    "selectedSeat": "1E",
+    "customer": {
+      "first_name": "Naruto",
+      "last_name": "Uzumaki",
+      "email": "naruto@konohagakure.jp",
+      "address": "7 Hokage Office",
+      "city": "Hidden Leaf",
+      "state": "Fire Country",
+      "zip": "77777",
+      "country": "Japan",
+      "phone": "1-800-RASENGAN"
+    },
+    "status": "CONFIRMED",
+    "timestamp": "2025-08-16T07:10:28.217Z",
+    "confirmation": "F10001-JFK-20250818-001028"
+  },
+  {
+    "flightId": "F10001",
+    "departure_airport": "JFK",
+    "arrival_airport": "LAX",
+    "departure_date": "2025-08-18",
+    "departure_time": "08:30",
+    "price": 350,
+    "selectedSeat": "1E",
+    "customer": {
+      "first_name": "Peter",
+      "last_name": "Parker",
+      "email": "spiderman@dailybugle.net",
+      "address": "20 Ingram Street",
+      "city": "Queens",
+      "state": "NY",
+      "zip": "11375",
+      "country": "USA",
+      "phone": "1-800-SPDR"
+    },
+    "status": "CONFIRMED",
+    "timestamp": "2025-08-16T07:12:02.797Z",
+    "confirmation": "F10001-JFK-20250818-001202"
   }
 ]
