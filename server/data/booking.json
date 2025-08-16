@@ -90,51 +90,5 @@
     "status": "CONFIRMED",
     "timestamp": "2025-08-15T20:22:31.640Z",
     "confirmation": "F20001-LAX-20250813-132231"
-  },
-  {
-    "flightId": "F20001",
-    "departure_airport": "LAX",
-    "arrival_airport": "JFK",
-    "departure_date": "2025-08-13",
-    "departure_time": "10:20",
-    "price": 355,
-    "selectedSeat": "1E",
-    "customer": {
-      "first_name": "Timothy",
-      "last_name": "Do",
-      "email": "thinh_do_94@yahoo.com",
-      "address": "19805 Hemmingway st",
-      "city": "Winnetka",
-      "state": "Ca",
-      "zip": "91306",
-      "country": "United States",
-      "phone": "7472309940"
-    },
-    "status": "CONFIRMED",
-    "timestamp": "2025-08-15T20:25:34.756Z",
-    "confirmation": "F20001-LAX-20250813-132534"
-  },
-  {
-    "flightId": "F20001",
-    "departure_airport": "LAX",
-    "arrival_airport": "JFK",
-    "departure_date": "2025-08-13",
-    "departure_time": "10:20",
-    "price": 355,
-    "selectedSeat": "1E",
-    "customer": {
-      "first_name": "Timothy",
-      "last_name": "Do",
-      "email": "thinh_do_94@yahoo.com",
-      "address": "19805 Hemmingway st",
-      "city": "Winnetka",
-      "state": "Ca",
-      "zip": "91306",
-      "country": "United States",
-      "phone": "7472309940"
-    },
-    "status": "CONFIRMED",
-    "timestamp": "2025-08-15T20:34:53.059Z",
-    "confirmation": "F20001-LAX-20250813-133453"
   }
 ]

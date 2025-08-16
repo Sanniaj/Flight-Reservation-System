@@ -76,6 +76,7 @@ export function lookupBooking(confirmation, email) {
 
     // loop start - check all booking
     for (let i = 0; i < bookings.length; i++) {
+        
 
         const currentBooking = bookings[i];
 
