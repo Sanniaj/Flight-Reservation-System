@@ -18,7 +18,7 @@
       "country": "Milkyway",
       "phone": "1-800-ToInfinity"
     },
-    "status": "CONFIRMED",
+    "status": "CANCELED",
     "timestamp": "2025-08-15T20:08:01.828Z",
     "confirmation": "F20002-LAX-20250813-130801"
   },
@@ -182,5 +182,28 @@
     "status": "CONFIRMED",
     "timestamp": "2025-08-16T07:12:02.797Z",
     "confirmation": "F10001-JFK-20250818-001202"
+  },
+  {
+    "flightId": "F10002",
+    "departure_airport": "JFK",
+    "arrival_airport": "LAX",
+    "departure_date": "2025-08-18",
+    "departure_time": "09:15",
+    "price": 360,
+    "selectedSeat": "8B,8A",
+    "customer": {
+      "first_name": "Sasuke",
+      "last_name": "Uchiha",
+      "email": "sasu.uchi@ninja.com",
+      "address": "3651 Main Street",
+      "city": "Alhambra",
+      "state": "CA",
+      "zip": "91001",
+      "country": "United States",
+      "phone": "9836752874"
+    },
+    "status": "CONFIRMED",
+    "timestamp": "2025-08-16T23:07:58.815Z",
+    "confirmation": "F10002-JFK-20250818-160758"
   }
 ]

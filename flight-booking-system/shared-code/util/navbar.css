@@ -1,0 +1,117 @@
+.g6-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(30, 58, 138, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #0284c7;
+    z-index: 1000;
+    padding: 0 40px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.g6-nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+
+.g6-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.g6-logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #0284c7 0%, #3b82f6 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.g6-nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.g6-nav-item {
+    position: relative;
+}
+
+.g6-nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.g6-nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.g6-nav-link.g6-active {
+    background: linear-gradient(135deg, #0284c7 0%, #3b82f6 100%);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.g6-nav-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Add top padding to prevent navbar overlap */
+body.g6-has-navbar {
+    padding-top: 70px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .g6-navbar {
+        padding: 0 20px;
+    }
+
+    .g6-nav-menu {
+        gap: 15px;
+    }
+
+    .g6-nav-link {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .g6-nav-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+body {
+    padding-top: 70px !important;
+}
