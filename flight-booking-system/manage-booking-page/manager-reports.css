@@ -233,6 +233,18 @@ nav a:hover {
     color: var(--g6-text-secondary);
 }
 
+/* added color for booking status */
+.booking-status.status-confirmed {
+    color: rgb(19, 36, 184);
+    font-weight: bold;
+}
+
+.booking-status.status-canceled {
+    color: rgb(212, 182, 46);
+    font-weight: bold;
+}
+
+
 @media (max-width: 768px) {
     .container {
         padding: 0 20px;
