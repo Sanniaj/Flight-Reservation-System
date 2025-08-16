@@ -115,7 +115,9 @@ const addNewCustomer = async (event) => {
     });
 
     if (!serverResponse.ok) {
-        alert("Booking failed........");
+        const errorData = await serverResponse.json();
+
+        alert(errorData.err || "Booking failed. please try again.");
         return false;
     }
     const savedBooking = await serverResponse.json();

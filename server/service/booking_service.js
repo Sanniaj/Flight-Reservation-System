@@ -14,6 +14,8 @@
  * note:
  *  - service request .json from booking_repo.js to get the data
  * 
+ * add bug fix double book.
+ * 
  */
 
 
@@ -28,6 +30,7 @@ function cleanInput(inputValue) {
     return String(inputValue || "").trim();
 }
 
+// trim and change email to lowercase
 function fixEmailFormat(email) {
     let fixedEmail = cleanInput(email);
     fixedEmail = fixedEmail.toLowerCase();
@@ -35,11 +38,12 @@ function fixEmailFormat(email) {
     return fixedEmail;
 }
 
-
 /**
  * createBooking() - create and save new booking
  * 
  *  - clean input from empty space and convert email to lowercase then save to .json
+ * 
+ * Added: isSeatTaken to prevent double book
  * 
  * @param {Object} bookingData - all the booking informations
  * @param {object} bookingData.flight - flight info like departure, flight_id, ect..
@@ -52,14 +56,21 @@ export function createBooking({ flight, selectedSeat, customer }) {
 
     customer.email = fixEmailFormat(customer.email);
 
-    const booking = new Booking({ flight, selectedSeat, customer });
     const bookings = loadBookings();
+    const seatTaken = Booking.isSeatTaken(bookings, flight.flight_id, selectedSeat);
+
+    if (seatTaken) {
+        throw new Error("SEAT_TAKEN");
+    }
+
+   const booking = new Booking({ flight, selectedSeat, customer });
 
     bookings.push(booking);
     saveBookings(bookings);
 
     return booking;
 }
+
 
 /**
  * Find a booking using customer's confirmation code and email

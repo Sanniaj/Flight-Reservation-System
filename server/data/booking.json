@@ -46,52 +46,6 @@
     "confirmation": "F20001-LAX-20250813-131353"
   },
   {
-    "flightId": "F20001",
-    "departure_airport": "LAX",
-    "arrival_airport": "JFK",
-    "departure_date": "2025-08-13",
-    "departure_time": "10:20",
-    "price": 355,
-    "selectedSeat": "1E",
-    "customer": {
-      "first_name": "buzz",
-      "last_name": "Lightyear",
-      "email": "buzz@starcommand.space",
-      "address": "1 StarCommand",
-      "city": "Earth",
-      "state": "milkyway",
-      "zip": "99999",
-      "country": "Galaxy",
-      "phone": "1-800-ToInfinity"
-    },
-    "status": "CONFIRMED",
-    "timestamp": "2025-08-15T20:13:53.363Z",
-    "confirmation": "F20001-LAX-20250813-131352"
-  },
-  {
-    "flightId": "F20001",
-    "departure_airport": "LAX",
-    "arrival_airport": "JFK",
-    "departure_date": "2025-08-13",
-    "departure_time": "10:20",
-    "price": 355,
-    "selectedSeat": "1D",
-    "customer": {
-      "first_name": "buzz",
-      "last_name": "Lightyear",
-      "email": "buzz@starcommand.space",
-      "address": "1 StarCommand",
-      "city": "Earth",
-      "state": "milkyway",
-      "zip": "99999",
-      "country": "Galaxy",
-      "phone": "1-800-ToInfinity"
-    },
-    "status": "CANCELED",
-    "timestamp": "2025-08-15T20:22:31.640Z",
-    "confirmation": "F20001-LAX-20250813-132231"
-  },
-  {
     "flightId": "F10001",
     "departure_airport": "JFK",
     "arrival_airport": "LAX",
@@ -182,5 +136,28 @@
     "status": "CONFIRMED",
     "timestamp": "2025-08-16T07:12:02.797Z",
     "confirmation": "F10001-JFK-20250818-001202"
+  },
+  {
+    "flightId": "F10001",
+    "departure_airport": "JFK",
+    "arrival_airport": "LAX",
+    "departure_date": "2025-08-18",
+    "departure_time": "08:30",
+    "price": 350,
+    "selectedSeat": "1D",
+    "customer": {
+      "first_name": "buzz",
+      "last_name": "Lightyear",
+      "email": "buzz@starcommand.space",
+      "address": "1 StarCommand",
+      "city": "Earth",
+      "state": "milkyway",
+      "zip": "99999",
+      "country": "Galaxy",
+      "phone": "1-800-ToInfinity"
+    },
+    "status": "CONFIRMED",
+    "timestamp": "2025-08-16T22:48:46.043Z",
+    "confirmation": "F10001-JFK-20250818-154846"
   }
 ]

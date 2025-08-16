@@ -152,6 +152,36 @@ class Booking{
         return confirmationCode;
     }
 
+    //BUG fix: double booking. 
+    //solution: check for seat status - taken - Available
+    /**
+     * isSeatTaken
+     * 
+     * 1. check for flight
+     * 2. check for seat
+     * 3. check for status is not canceled
+     * @param {Array} bookings 
+     * @param {String} flightID 
+     * @param {String} seat 
+     * @returns true - new checkout with sameID, Seatnumber, and status confirmed
+     *                   will not be able to checkout. 
+     */
+    static isSeatTaken(bookings, flightId, seat) {
+
+        for (let i = 0; i< bookings.length; i++) {
+
+            const booking = bookings[i] 
+            const sameFlight = booking.flightId === flightId;
+            const sameSeat = booking.selectedSeat === seat;
+            const statusGood = booking.status !== BOOKING_STATUS.CANCELLED;
+
+            if(sameFlight && sameSeat && statusGood) {
+                return true;
+            }
+        }         
+    }
+
+
 }
 
 export default Booking;

@@ -13,10 +13,10 @@
  * 
  * 
  * parameter:
- * @param {Object} bookingData - all booking details
- * @param {Object} bookingData.flight - flight details
+ * @param {Object} bookingData              - all booking details
+ * @param {Object} bookingData.flight       - flight details
  * @param {string} bookingData.selectedSeat - seat chosen by customer
- * @param {Object} bookingData.customer - customer info
+ * @param {Object} bookingData.customer     - customer info
  * 
  * @param {string} req.query.confirmation - confirmation code from user input
  * @param {string} req.query.email - email from user input
@@ -47,15 +47,21 @@ bookingRouter.post("/bookings", (req, res) => {
   const flight = req.body.flight;
   const selectedSeat = trimValue(req.body.selectedSeat);
   const customer = req.body.customer;
+  const seat = selectedSeat;
 
-  const bookingData = {flight, selectedSeat, customer};
+  const bookingData = {flight, selectedSeat:seat, customer};
 
   try {
     const newBooking = createBooking(bookingData);
     res.status(201).json(newBooking);
   } catch (err) {
     console.error("Error creating booking:", err);
-    res.status(500).json({ error: "Failed to create booking" });
+
+    if (err.message === "SEAT_TAKEN") {
+      return res.status(409).json({ err: "seat already booked for this flight"});
+    }
+
+    res.status(500).json({ err: "Failed to create booking" });
   }
 });
 
