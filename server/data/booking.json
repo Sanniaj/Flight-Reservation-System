@@ -18,7 +18,7 @@
       "country": "Milkyway",
       "phone": "1-800-ToInfinity"
     },
-    "status": "CONFIRMED",
+    "status": "CANCELED",
     "timestamp": "2025-08-15T20:08:01.828Z",
     "confirmation": "F20002-LAX-20250813-130801"
   },
@@ -205,5 +205,51 @@
     "status": "CONFIRMED",
     "timestamp": "2025-08-17T05:15:06.047Z",
     "confirmation": "F10001-JFK-20250818-221506"
+  },
+  {
+    "flightId": "F20002",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-23",
+    "departure_time": "11:05",
+    "price": 365,
+    "selectedSeat": "4E",
+    "customer": {
+      "first_name": "buzz",
+      "last_name": "testing",
+      "email": "testing@gmail.com",
+      "address": "testing ",
+      "city": "testing",
+      "state": "testing",
+      "zip": "testing",
+      "country": "testing",
+      "phone": "testing"
+    },
+    "status": "CONFIRMED",
+    "timestamp": "2025-08-17T20:10:32.313Z",
+    "confirmation": "F20002-LAX-20250823-131032"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-23",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "4F",
+    "customer": {
+      "first_name": "testing double book",
+      "last_name": "testing double book",
+      "email": "testingdoublebook@gmail.com",
+      "address": "testing double book",
+      "city": "testing double book",
+      "state": "testing double book",
+      "zip": "testing double book",
+      "country": "testing double book",
+      "phone": "testing double book"
+    },
+    "status": "CONFIRMED",
+    "timestamp": "2025-08-17T20:11:37.362Z",
+    "confirmation": "F20001-LAX-20250823-131137"
   }
 ]

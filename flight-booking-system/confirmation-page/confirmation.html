@@ -3,11 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../checkout-page/checkout-page.css" />
-    <title>Booking Confirmation</title>
+    <title>Booking Confirmation | Like a G6</title>
+    <link rel="stylesheet" href="/static/shared-code/util/navbar.css">
 </head>
 <body>
 <script src="../checkout-page/checkout-page.js"></script>
 <script src="confirmation.js"></script>
+
+<!-- navigation Bar -->
+<nav class="g6-navbar">
+    <div class="g6-nav-container">
+        <a href="/static/search-page/frontend-search-location.html" class="g6-nav-logo">
+            <div class="g6-logo-icon">✈</div>
+            Like a G6
+        </a>
+
+        <ul class="g6-nav-menu">
+            <li class="g6-nav-item">
+                <a href="/static/search-page/frontend-search-location.html" class="g6-nav-link">
+                    <svg class="g6-nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                    </svg>
+                    Home
+                </a>
+            </li>
+            <li class="g6-nav-item">
+                <a href="/static/manage-booking-page/manage-booking.html" class="g6-nav-link">
+                    <svg class="g6-nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Manage Booking
+                </a>
+            </li>
+            <li class="g6-nav-item">
+                <a href="/static/manage-booking-page/manager-reports.html" class="g6-nav-link">
+                    <svg class="g6-nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                    </svg>
+                    Manager Reports
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 <div id="checkout-container">
     <div class="checkout-details-container">

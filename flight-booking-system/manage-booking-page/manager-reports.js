@@ -27,7 +27,7 @@ function displayTotal(report) {
     const totalRevenueDisplay = document.getElementById("total-revenue");
 
     totalBookingDisplay.textContent = report.totalBookings;
-    totalRevenueDisplay.textContent = report.totalRevenue;
+    totalRevenueDisplay.textContent = "$" + report.totalRevenue;
 }
 
 function displayBookings (bookings) {
