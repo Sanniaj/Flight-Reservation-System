@@ -159,5 +159,51 @@
     "status": "CONFIRMED",
     "timestamp": "2025-08-16T22:48:46.043Z",
     "confirmation": "F10001-JFK-20250818-154846"
+  },
+  {
+    "flightId": "F10001",
+    "departure_airport": "JFK",
+    "arrival_airport": "LAX",
+    "departure_date": "2025-08-18",
+    "departure_time": "08:30",
+    "price": 350,
+    "selectedSeat": "3E",
+    "customer": {
+      "first_name": "buzz",
+      "last_name": "Lightyear",
+      "email": "buzz@starcommand.space",
+      "address": "1 StarCommand",
+      "city": "Earth",
+      "state": "milkyway",
+      "zip": "99999",
+      "country": "Galaxy",
+      "phone": "1-800-ToInfinity"
+    },
+    "status": "CONFIRMED",
+    "timestamp": "2025-08-17T02:19:46.731Z",
+    "confirmation": "F10001-JFK-20250818-191946"
+  },
+  {
+    "flightId": "F10001",
+    "departure_airport": "JFK",
+    "arrival_airport": "LAX",
+    "departure_date": "2025-08-18",
+    "departure_time": "08:30",
+    "price": 350,
+    "selectedSeat": "10A,1D",
+    "customer": {
+      "first_name": "buzz",
+      "last_name": "Lightyear",
+      "email": "buzz@starcommand.space",
+      "address": "1 StarCommand",
+      "city": "Earth",
+      "state": "milkyway",
+      "zip": "99999",
+      "country": "Galaxy",
+      "phone": "1-800-ToInfinity"
+    },
+    "status": "CONFIRMED",
+    "timestamp": "2025-08-17T05:15:06.047Z",
+    "confirmation": "F10001-JFK-20250818-221506"
   }
 ]

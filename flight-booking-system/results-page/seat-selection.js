@@ -57,6 +57,7 @@ async function fetchSeatMap() {
 }
 
 // Create seat map with flight-specific handling
+// make some seat occupied
 export async function createSeatMap(flightID) {
     // Initialize selected seats for this flight if not exists
     if (!selectedSeatsPerFlight[flightID]) {
