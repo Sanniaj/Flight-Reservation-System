@@ -37,7 +37,7 @@ export class BookingManager {
     }
 
     /**
-     * filterByStatus() - filter flight status to display either CONFIRMED, CANCELLED, or the whole list.
+     * filterByStatus() - filter flight status to display either CONFIRMED, CANCELED, or the whole list.
      * @param {Array} bookings - array of booking objects
      * @param {String} status - either ALL, CANCELED, or CONFIRMED
      * @returns either full booking list or a list of filtered results. 

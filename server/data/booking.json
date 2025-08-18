@@ -251,5 +251,51 @@
     "status": "CONFIRMED",
     "timestamp": "2025-08-17T20:11:37.362Z",
     "confirmation": "F20001-LAX-20250823-131137"
+  },
+  {
+    "flightId": "F20001",
+    "departure_airport": "LAX",
+    "arrival_airport": "JFK",
+    "departure_date": "2025-08-23",
+    "departure_time": "10:20",
+    "price": 355,
+    "selectedSeat": "6F",
+    "customer": {
+      "first_name": "buzz",
+      "last_name": "Lightyear",
+      "email": "buzz@starcommand.space",
+      "address": "1 StarCommand",
+      "city": "Winnetka",
+      "state": "Ca",
+      "zip": "91306",
+      "country": "United States",
+      "phone": "1-800-ToInfinity"
+    },
+    "status": "CANCELED",
+    "timestamp": "2025-08-17T23:53:43.031Z",
+    "confirmation": "F20001-LAX-20250823-165343"
+  },
+  {
+    "flightId": "F10001",
+    "departure_airport": "JFK",
+    "arrival_airport": "LAX",
+    "departure_date": "2025-08-18",
+    "departure_time": "08:30",
+    "price": 350,
+    "selectedSeat": "1F",
+    "customer": {
+      "first_name": "testing before push",
+      "last_name": "testing before push",
+      "email": "testing@gmail.com",
+      "address": "testing before push",
+      "city": "testing before push",
+      "state": "testing before push",
+      "zip": "testing before push",
+      "country": "testing before push",
+      "phone": "testing before push"
+    },
+    "status": "CANCELED",
+    "timestamp": "2025-08-18T04:44:20.753Z",
+    "confirmation": "F10001-JFK-20250818-214420"
   }
 ]

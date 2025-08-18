@@ -1,13 +1,30 @@
 /**
  * flight_search_service.js
  * 
- * filter flights
+ * purpose: 
+ *      - search all flights and return the one that match user input
+ *      = use Flight.flightCheck() to check each flight if matched
+ * 
+ * 
  */
 
 import { Flight } from "../domain/flight.js";
 import { loadFlightData } from "../repo/flight_data_repo.js";
 
 
+
+
+/**
+ * 
+ * filterFlights
+ * note:
+ *  - if no input, return []
+ *  - if input missing departure or arrival or date. return []
+ *  - load flight data from flight_data.json
+ * - turn each row into Flight object
+ *  - check each flight to see if similar. -> push to matchedArray
+ * 
+ */
 export function filterFlights(searchInput) {
 
     if (!searchInput) {

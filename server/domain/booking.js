@@ -51,7 +51,7 @@
  */
 export const BOOKING_STATUS = {
     CONFIRMED : "CONFIRMED",
-    CANCELLED : "CANCELLED",
+    CANCELED : "CANCELED",
 }
 
 class Booking{
@@ -173,12 +173,13 @@ class Booking{
             const booking = bookings[i] 
             const sameFlight = booking.flightId === flightId;
             const sameSeat = booking.selectedSeat === seat;
-            const statusGood = booking.status !== BOOKING_STATUS.CANCELLED;
+            const statusGood = booking.status !== BOOKING_STATUS.CANCELED;
 
             if(sameFlight && sameSeat && statusGood) {
                 return true;
             }
-        }         
+        }
+        return false;         
     }
 
 
